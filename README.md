@@ -1100,6 +1100,8 @@ td button {
         <div class="login-logo">
 
             <img
+            src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b&am…%22"
+
                 alt="Dragon Mart Logo"
                 crossorigin="anonymous"
             >
