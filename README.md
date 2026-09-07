@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,16 +16,7 @@
    PAGE
 ===================================================== */
 
-html,
 body {
-
-    margin: 0;
-
-    padding: 0;
-
-    width: 100%;
-
-    min-height: 100%;
 
     font-family:
         "Segoe UI",
@@ -34,6 +24,12 @@ body {
         sans-serif;
 
     background: #ffffff;
+
+    padding: 0;
+
+    margin: 0;
+
+    min-height: 100vh;
 
 }
 
@@ -84,9 +80,7 @@ body {
 }
 
 
-/* =====================================================
-   LOGIN CARD
-===================================================== */
+/* LOGIN CARD */
 
 .login-card {
 
@@ -95,6 +89,28 @@ body {
     max-width: 430px;
 
     margin: 0 auto;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    padding: 35px 32px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.35);
+
+}
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 430px;
 
     background: #ffffff;
 
@@ -141,10 +157,6 @@ body {
 }
 
 
-/* =====================================================
-   LOGIN LOGO
-===================================================== */
-
 .login-logo {
 
     width: 110px;
@@ -176,10 +188,6 @@ body {
 
 }
 
-
-/* =====================================================
-   LOGIN TEXT
-===================================================== */
 
 .login-card h1 {
 
@@ -215,10 +223,6 @@ body {
 
 }
 
-
-/* =====================================================
-   LOGIN FIELDS
-===================================================== */
 
 .login-field {
 
@@ -276,10 +280,6 @@ body {
 }
 
 
-/* =====================================================
-   PASSWORD
-===================================================== */
-
 .password-wrapper {
 
     position: relative;
@@ -316,10 +316,6 @@ body {
 
 }
 
-
-/* =====================================================
-   LOGIN BUTTON
-===================================================== */
 
 .login-button {
 
@@ -418,15 +414,11 @@ body {
 
 #rosterArea {
 
-    width: 100%;
-
     background: #ffffff;
 
     padding: 20px;
 
     box-sizing: border-box;
-
-    overflow-x: auto;
 
 }
 
@@ -515,7 +507,7 @@ h2 {
 
 
 /* =====================================================
-   WEEK DATE
+   WEEK DATE DISPLAY
 ===================================================== */
 
 .week-display {
@@ -534,7 +526,7 @@ h2 {
 
 
 /* =====================================================
-   WEEK CONTROLS
+   WEEK NAVIGATION
 ===================================================== */
 
 .week-controls {
@@ -563,8 +555,6 @@ h2 {
     border-radius: 6px;
 
     font-weight: 600;
-
-    transition: .2s;
 
 }
 
@@ -600,7 +590,7 @@ h2 {
 
 
 /* =====================================================
-   OTHER BUTTONS
+   BUTTONS
 ===================================================== */
 
 .controls {
@@ -666,24 +656,18 @@ h2 {
 
 
 /* =====================================================
-   TABLE - FIXED SIZE
+   TABLE
 ===================================================== */
 
-#rosterTable {
+table {
 
-    width: 1450px;
-
-    min-width: 1450px;
-
-    max-width: 1450px;
-
-    margin: 0 auto;
+    width: 100%;
 
     border-collapse: separate;
 
     border-spacing: 0;
 
-    background: #ffffff;
+    background: white;
 
     border-radius: 8px;
 
@@ -698,77 +682,8 @@ h2 {
 }
 
 
-/* =====================================================
-   EXACT COLUMN WIDTHS
-===================================================== */
-
-
-/* STAFF NAME */
-
-#rosterTable th:first-child,
-#rosterTable td:first-child {
-
-    width: 190px;
-
-    min-width: 190px;
-
-    max-width: 190px;
-
-}
-
-
-/* MONDAY TO SUNDAY */
-
-#rosterTable th:nth-child(2),
-#rosterTable td:nth-child(2),
-
-#rosterTable th:nth-child(3),
-#rosterTable td:nth-child(3),
-
-#rosterTable th:nth-child(4),
-#rosterTable td:nth-child(4),
-
-#rosterTable th:nth-child(5),
-#rosterTable td:nth-child(5),
-
-#rosterTable th:nth-child(6),
-#rosterTable td:nth-child(6),
-
-#rosterTable th:nth-child(7),
-#rosterTable td:nth-child(7),
-
-#rosterTable th:nth-child(8),
-#rosterTable td:nth-child(8) {
-
-    width: 160px;
-
-    min-width: 160px;
-
-    max-width: 160px;
-
-}
-
-
-/* REMOVE COLUMN */
-
-#rosterTable th:last-child,
-#rosterTable td:last-child {
-
-    width: 80px;
-
-    min-width: 80px;
-
-    max-width: 80px;
-
-}
-
-
-/* =====================================================
-   TABLE CELLS
-===================================================== */
-
-#rosterTable th,
-#rosterTable td {
+th,
+td {
 
     border: 1px solid #d5d5d5;
 
@@ -780,8 +695,6 @@ h2 {
 
     vertical-align: middle;
 
-    box-sizing: border-box;
-
 }
 
 
@@ -789,7 +702,7 @@ h2 {
    HEADER CELLS
 ===================================================== */
 
-#rosterTable th {
+th {
 
     background:
         linear-gradient(
@@ -812,29 +725,31 @@ h2 {
 
 
 /* =====================================================
-   STAFF NAME CELL
+   STAFF NAME COLUMN
 ===================================================== */
 
-#rosterTable td:first-child {
+th:first-child,
+td:first-child {
+
+    width: 180px;
+
+    min-width: 180px;
+
+}
+
+
+td:first-child {
 
     height: 55px;
 
 }
 
 
-/* =====================================================
-   STAFF NAME INPUT
-===================================================== */
+td:first-child input {
 
-#rosterTable td:first-child input {
-
-    width: 165px;
-
-    min-width: 165px;
+    width: 100%;
 
     max-width: 165px;
-
-    height: 38px;
 
     padding: 8px;
 
@@ -859,19 +774,17 @@ h2 {
    SELECT
 ===================================================== */
 
-#rosterTable select {
+select {
 
     display: block;
 
-    width: 135px;
+    margin: 0 auto;
 
-    min-width: 135px;
+    text-align: center;
+
+    width: 100%;
 
     max-width: 135px;
-
-    height: 38px;
-
-    margin: 0 auto;
 
     padding: 8px 4px;
 
@@ -885,14 +798,8 @@ h2 {
 
     font-weight: 600;
 
-    box-sizing: border-box;
-
 }
 
-
-/* =====================================================
-   SELECT COLORS
-===================================================== */
 
 .SelectShift {
 
@@ -998,10 +905,6 @@ h2 {
 }
 
 
-/* =====================================================
-   DUPLICATE
-===================================================== */
-
 .duplicate {
 
     border:
@@ -1018,16 +921,13 @@ h2 {
    REMOVE BUTTON
 ===================================================== */
 
-#rosterTable td:last-child button {
-
-    width: 55px;
-
-    height: 34px;
-
-    padding: 6px 10px;
+td button {
 
     background:
         #dc3545;
+
+    padding:
+        6px 10px;
 
     border-radius:
         5px;
@@ -1045,9 +945,7 @@ h2 {
    DAILY SUMMARY
 ===================================================== */
 
-#rosterTable .summary-row td {
-
-    height: 45px;
+.summary-row td {
 
     background: #f7f7f7;
 
@@ -1061,12 +959,10 @@ h2 {
 
     line-height: 1.35;
 
-    box-sizing: border-box;
-
 }
 
 
-#rosterTable .summary-row td:first-child {
+.summary-row td:first-child {
 
     background: #eeeeee;
 
@@ -1124,29 +1020,6 @@ h2 {
 
 
 /* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 1500px) {
-
-    #rosterArea {
-
-        overflow-x: auto;
-
-    }
-
-    #rosterTable {
-
-        margin-left: 0;
-
-        margin-right: 0;
-
-    }
-
-}
-
-
-/* =====================================================
    PRINT
 ===================================================== */
 
@@ -1160,13 +1033,13 @@ h2 {
 
     .week-controls {
 
-        display: none !important;
+        display: none;
 
     }
 
     .controls {
 
-        display: none !important;
+        display: none;
 
     }
 
@@ -1174,25 +1047,11 @@ h2 {
 
         padding: 0;
 
-        margin: 0;
-
     }
 
     #rosterArea {
 
         padding: 10px;
-
-        overflow: visible;
-
-    }
-
-    #rosterTable {
-
-        width: 1450px;
-
-        min-width: 1450px;
-
-        max-width: 1450px;
 
     }
 
@@ -1220,21 +1079,6 @@ h2 {
             exact;
 
     }
-
-}
-
-
-/* =====================================================
-   IMAGE EXPORT
-===================================================== */
-
-.image-export-mode {
-
-    width: 1450px !important;
-
-    min-width: 1450px !important;
-
-    max-width: 1450px !important;
 
 }
 
@@ -1360,6 +1204,8 @@ h2 {
 <div id="rosterArea">
 
 
+    <!-- HEADER -->
+
     <div class="header">
 
         <div class="logo-container">
@@ -1381,11 +1227,15 @@ h2 {
     </div>
 
 
+    <!-- WEEK DATE -->
+
     <div
         id="weekDisplay"
         class="week-display">
     </div>
 
+
+    <!-- WEEK BUTTONS -->
 
     <div class="week-controls">
 
@@ -1417,6 +1267,8 @@ h2 {
 
     </div>
 
+
+    <!-- TABLE -->
 
     <table id="rosterTable"></table>
 
@@ -1473,6 +1325,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
 
 
 <script>
+
 
 /* =====================================================
    LOGIN DETAILS
@@ -3465,15 +3318,7 @@ async function downloadRosterImage() {
 
 
     clone.style.width =
-        "1510px";
-
-
-    clone.style.minWidth =
-        "1510px";
-
-
-    clone.style.maxWidth =
-        "1510px";
+        "1700px";
 
 
     clone.style.background =
@@ -3486,11 +3331,6 @@ async function downloadRosterImage() {
 
     clone.style.boxSizing =
         "border-box";
-
-
-    clone.classList.add(
-        "image-export-mode"
-    );
 
 
     const inputs =
@@ -3529,7 +3369,7 @@ async function downloadRosterImage() {
 
 
             text.style.textAlign =
-                "center";
+                "left";
 
 
             text.style.padding =
@@ -3537,19 +3377,11 @@ async function downloadRosterImage() {
 
 
             text.style.width =
-                "165px";
+                "100%";
 
 
             text.style.minWidth =
-                "165px";
-
-
-            text.style.maxWidth =
-                "165px";
-
-
-            text.style.height =
-                "38px";
+                "190px";
 
 
             text.style.boxSizing =
@@ -3686,20 +3518,8 @@ async function downloadRosterImage() {
                 "4px";
 
 
-            div.style.width =
-                "135px";
-
-
-            div.style.minWidth =
-                "135px";
-
-
-            div.style.maxWidth =
-                "135px";
-
-
-            div.style.height =
-                "38px";
+            div.style.minHeight =
+                "34px";
 
 
             div.style.display =
@@ -3716,6 +3536,10 @@ async function downloadRosterImage() {
 
             div.style.boxSizing =
                 "border-box";
+
+
+            div.style.width =
+                "100%";
 
 
             if (
@@ -3845,15 +3669,7 @@ async function downloadRosterImage() {
     if (imageTable) {
 
         imageTable.style.width =
-            "1450px";
-
-
-        imageTable.style.minWidth =
-            "1450px";
-
-
-        imageTable.style.maxWidth =
-            "1450px";
+            "100%";
 
 
         imageTable.style.tableLayout =
@@ -3884,11 +3700,6 @@ async function downloadRosterImage() {
 
                         row.cells[0]
                             .style.minWidth =
-                            "190px";
-
-
-                        row.cells[0]
-                            .style.maxWidth =
                             "190px";
 
                     }
@@ -4005,4 +3816,3 @@ checkLogin();
 </body>
 
 </html>
-```
