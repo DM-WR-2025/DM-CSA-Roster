@@ -1,1057 +1,402 @@
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dragon Mart Weekly Staff Roster</title>
 
 <style>
+*{box-sizing:border-box}
 
-/* =====================================================
-   PAGE
-===================================================== */
-
-body {
-
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background: #ffffff;
-
-    padding: 0;
-
-    margin: 0;
-
-    min-height: 100vh;
-
+body{
+    margin:0;
+    font-family:Segoe UI,Arial,sans-serif;
+    background:#fff;
 }
 
+/* ================= LOGIN ================= */
 
-/* =====================================================
-   LOGIN PAGE
-===================================================== */
-
-#loginPage {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    width: 100vw;
-    height: 100vh;
-
-    z-index: 99999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    box-sizing: border-box;
-
-    padding: 20px;
-
-    margin: 0;
-
+#loginPage{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
     background:
-        radial-gradient(
-            circle at top right,
-            #d99a2b 0%,
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #151515 0%,
-            #292929 50%,
-            #111111 100%
-        );
-
+        radial-gradient(circle at top right,#d99a2b 0%,transparent 35%),
+        linear-gradient(135deg,#151515,#292929,#111);
 }
 
-
-/* LOGIN CARD */
-
-.login-card {
-
-    width: 100%;
-
-    max-width: 430px;
-
-    margin: 0 auto;
-
-    background: #ffffff;
-
-    border-radius: 20px;
-
-    padding: 35px 32px;
-
-    box-sizing: border-box;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.35);
-
+.login-card{
+    width:100%;
+    max-width:430px;
+    background:#fff;
+    border-radius:20px;
+    padding:35px 32px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
 
-.login-card {
-
-    width: 100%;
-
-    max-width: 430px;
-
-    background: #ffffff;
-
-    border-radius: 20px;
-
-    padding: 35px 32px;
-
-    box-sizing: border-box;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.25);
-
-    animation:
-        loginFadeIn .45s ease;
-
+.login-logo{
+    width:110px;
+    height:110px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-
-@keyframes loginFadeIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(.97);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
+.login-logo img{
+    max-width:105px;
+    max-height:105px;
+    object-fit:contain;
 }
 
-
-.login-logo {
-
-    width: 110px;
-
-    height: 110px;
-
-    margin: 0 auto 12px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
+.login-card h1{
+    margin:0;
+    font-size:30px;
+    color:#222;
 }
 
-
-.login-logo img {
-
-    max-width: 105px;
-
-    max-height: 105px;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-
+.login-card h2{
+    margin:5px 0 8px;
+    font-size:21px;
+    color:#555;
 }
 
-
-.login-card h1 {
-
-    margin: 0;
-
-    font-size: 30px;
-
-    color: #222222;
-
-    font-weight: 800;
-
+.login-subtitle{
+    color:#777;
+    font-size:14px;
+    margin-bottom:25px;
 }
 
-
-.login-card h2 {
-
-    margin: 5px 0 8px;
-
-    font-size: 21px;
-
-    color: #555555;
-
+.login-field{
+    text-align:left;
+    margin-bottom:18px;
 }
 
-
-.login-subtitle {
-
-    margin: 0 0 25px;
-
-    color: #777777;
-
-    font-size: 14px;
-
+.login-field label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:700;
+    font-size:14px;
 }
 
-
-.login-field {
-
-    text-align: left;
-
-    margin-bottom: 18px;
-
+.login-field input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:9px;
+    font-size:15px;
 }
 
-
-.login-field label {
-
-    display: block;
-
-    margin-bottom: 7px;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    color: #333333;
-
+.pass-box{
+    position:relative;
 }
 
-
-.login-field input {
-
-    width: 100%;
-
-    padding: 13px 14px;
-
-    box-sizing: border-box;
-
-    border: 1px solid #cccccc;
-
-    border-radius: 9px;
-
-    font-size: 15px;
-
-    outline: none;
-
-    transition: .25s;
-
+.pass-box input{
+    padding-right:45px;
 }
 
-
-.login-field input:focus {
-
-    border-color: #2575fc;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(37,117,252,.15);
-
+.show-pass{
+    position:absolute;
+    right:5px;
+    top:50%;
+    transform:translateY(-50%);
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    font-size:17px;
 }
 
-
-.password-wrapper {
-
-    position: relative;
-
+.login-button{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:9px;
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
 }
 
-
-.password-wrapper input {
-
-    padding-right: 48px;
-
+.login-error{
+    min-height:20px;
+    margin-top:14px;
+    color:#dc3545;
+    font-size:13px;
+    font-weight:600;
 }
 
-
-.show-password {
-
-    position: absolute;
-
-    right: 5px;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border: none;
-
-    background: transparent;
-
-    padding: 8px;
-
-    cursor: pointer;
-
-    font-size: 17px;
-
+.login-footer{
+    margin-top:25px;
+    padding-top:18px;
+    border-top:1px solid #eee;
+    color:#999;
+    font-size:12px;
 }
 
+/* ================= APP ================= */
 
-.login-button {
-
-    width: 100%;
-
-    border: none;
-
-    border-radius: 9px;
-
-    padding: 14px;
-
-    margin-top: 5px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #6a11cb,
-            #2575fc
-        );
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .25s;
-
+#app{
+    display:none;
+    padding:20px;
 }
 
-
-.login-button:hover {
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 7px 18px
-        rgba(37,117,252,.3);
-
+.header{
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
 }
 
-
-.login-error {
-
-    min-height: 20px;
-
-    margin-top: 14px;
-
-    color: #dc3545;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
+.logo{
+    position:absolute;
+    left:10px;
+    top:0;
+    width:170px;
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-
-.login-footer {
-
-    margin-top: 25px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid #eeeeee;
-
-    color: #999999;
-
-    font-size: 12px;
-
+.logo img{
+    max-width:160px;
+    max-height:140px;
+    object-fit:contain;
 }
 
-
-@media (max-width: 480px) {
-
-    .login-card {
-
-        padding: 30px 22px;
-
-    }
-
-    .login-card h1 {
-
-        font-size: 26px;
-
-    }
-
+.title{
+    font-size:28px;
+    font-weight:bold;
+    color:#222;
+    text-shadow:1px 1px 2px #aaa;
 }
 
-
-/* =====================================================
-   ROSTER AREA
-===================================================== */
-
-#rosterArea {
-
-    background: #ffffff;
-
-    padding: 20px;
-
-    box-sizing: border-box;
-
+.week{
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    color:#444;
+    margin:5px 0 15px;
 }
 
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-bottom: 10px;
-
-    position: relative;
-
-    min-height: 150px;
-
+.controls,
+.week-controls{
+    text-align:center;
+    margin:12px 0;
 }
 
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.logo-container {
-
-    position: absolute;
-
-    left: 10px;
-
-    top: 0;
-
-    width: 170px;
-
-    height: 150px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
+button.action{
+    border:0;
+    border-radius:6px;
+    padding:10px 18px;
+    margin:5px;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
 }
 
+.prev{background:#6c757d}
+.next{background:#007bff}
+.save{background:#28a745}
+.print{background:#007bff}
+.csv{background:#6f42c1}
+.image{background:#17a2b8}
+.add{background:#20c997}
 
-.logo-container img {
+/* ================= TABLE ================= */
 
-    max-height: 140px;
-
-    max-width: 160px;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-
+table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    background:#fff;
+    box-shadow:0 4px 8px rgba(0,0,0,.1);
 }
 
-
-/* =====================================================
-   TITLE
-===================================================== */
-
-h2 {
-
-    text-align: center;
-
-    margin: 0;
-
-    font-size: 28px;
-
-    color: #222222;
-
-    font-weight: bold;
-
-    text-shadow:
-        1px 1px 2px #aaaaaa;
-
+th,td{
+    border:1px solid #d0d0d0;
+    padding:8px 4px;
+    text-align:center;
+    vertical-align:middle;
+    font-size:13px;
 }
 
-
-/* =====================================================
-   WEEK DATE DISPLAY
-===================================================== */
-
-.week-display {
-
-    text-align: center;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #444444;
-
-    margin: 5px 0 15px 0;
-
+th{
+    background:linear-gradient(135deg,#6a11cb,#2575fc);
+    color:#fff;
+    font-weight:700;
 }
-
-
-/* =====================================================
-   WEEK NAVIGATION
-===================================================== */
-
-.week-controls {
-
-    text-align: center;
-
-    margin: 10px 0 15px 0;
-
-}
-
-
-.week-controls button {
-
-    padding: 10px 18px;
-
-    margin: 5px;
-
-    font-size: 14px;
-
-    border: none;
-
-    cursor: pointer;
-
-    color: white;
-
-    border-radius: 6px;
-
-    font-weight: 600;
-
-}
-
-
-.previous-button {
-
-    background: #6c757d;
-
-}
-
-
-.next-button {
-
-    background: #007bff;
-
-}
-
-
-.save-week-button {
-
-    background: #28a745;
-
-}
-
-
-.week-controls button:hover {
-
-    opacity: .9;
-
-    transform: scale(1.05);
-
-}
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.controls {
-
-    margin: 15px 0;
-
-    text-align: center;
-
-}
-
-
-.controls button {
-
-    padding: 10px 18px;
-
-    margin: 5px;
-
-    font-size: 14px;
-
-    border: none;
-
-    cursor: pointer;
-
-    background: #007bff;
-
-    color: white;
-
-    border-radius: 6px;
-
-    transition: .3s;
-
-}
-
-
-.controls button:hover {
-
-    opacity: .9;
-
-    transform: scale(1.05);
-
-}
-
-
-.csv-button {
-
-    background: #6f42c1 !important;
-
-}
-
-
-.image-button {
-
-    background: #17a2b8 !important;
-
-}
-
-
-.add-staff-button {
-
-    background: #20c997 !important;
-
-}
-
-
-/* =====================================================
-   TABLE
-===================================================== */
-
-table {
-
-    width: 100%;
-
-    border-collapse: separate;
-
-    border-spacing: 0;
-
-    background: white;
-
-    border-radius: 8px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 4px 8px
-        rgba(0,0,0,.1);
-
-    table-layout: fixed;
-
-}
-
-
-th,
-td {
-
-    border: 1px solid #d5d5d5;
-
-    padding: 9px 5px;
-
-    text-align: center;
-
-    font-size: 14px;
-
-    vertical-align: middle;
-
-}
-
-
-/* =====================================================
-   HEADER CELLS
-===================================================== */
-
-th {
-
-    background:
-        linear-gradient(
-            135deg,
-            #6a11cb,
-            #2575fc
-        );
-
-    color: white;
-
-    font-weight: 600;
-
-    font-size: 14px;
-
-    text-shadow:
-        1px 1px 2px
-        rgba(0,0,0,.3);
-
-}
-
-
-/* =====================================================
-   STAFF NAME COLUMN
-===================================================== */
 
 th:first-child,
-td:first-child {
-
-    width: 180px;
-
-    min-width: 180px;
-
+td:first-child{
+    width:180px;
 }
 
-
-td:first-child {
-
-    height: 55px;
-
+.name-input{
+    width:95%;
+    padding:8px;
+    border:1px solid #bbb;
+    border-radius:5px;
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+    color:#222;
 }
 
-
-td:first-child input {
-
-    width: 100%;
-
-    max-width: 165px;
-
-    padding: 8px;
-
-    text-align: center;
-
-    border-radius: 5px;
-
-    border: 1px solid #bbb;
-
-    box-sizing: border-box;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    color: #222222;
-
+select{
+    width:100%;
+    max-width:145px;
+    padding:8px 3px;
+    border-radius:6px;
+    border:2px solid #aaa;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
 }
 
+/* ================= SHIFT COLORS ================= */
 
-/* =====================================================
-   SELECT
-===================================================== */
-
-select {
-
-    display: block;
-
-    margin: 0 auto;
-
-    text-align: center;
-
-    width: 100%;
-
-    max-width: 135px;
-
-    padding: 8px 4px;
-
-    border-radius: 6px;
-
-    border: 1px solid #aaa;
-
-    cursor: pointer;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
+.SelectShift{
+    background:#fff!important;
+    color:#555!important;
+    border:2px solid #ccc!important;
 }
 
-
-.SelectShift {
-
-    background: #ffffff !important;
-
-    color: #555555 !important;
-
-    border:
-        2px solid #cccccc !important;
-
+.AM{
+    background:#2196F3!important;
+    color:#fff!important;
+    border:2px solid #1976D2!important;
 }
 
-
-.AM {
-
-    background:
-        #2196F3 !important;
-
-    color: white !important;
-
-    border:
-        2px solid #1976D2 !important;
-
-    font-weight: bold;
-
+.PM{
+    background:#4CAF50!important;
+    color:#fff!important;
+    border:2px solid #388E3C!important;
 }
 
-
-.PM {
-
-    background:
-        #4CAF50 !important;
-
-    color: white !important;
-
-    border:
-        2px solid #388E3C !important;
-
-    font-weight: bold;
-
+.MID{
+    background:#A0522D!important;
+    color:#fff!important;
+    border:2px solid #7B3F21!important;
 }
 
-
-.MID {
-
-    background:
-        #A0522D !important;
-
-    color: white !important;
-
-    border:
-        2px solid #7B3F21 !important;
-
-    font-weight: bold;
-
+.Off{
+    background:#F8D7DA!important;
+    color:#721C24!important;
+    border:2px solid #E5A1A6!important;
 }
 
-
-.Off {
-
-    background:
-        #F8D7DA !important;
-
-    color:
-        #721C24 !important;
-
-    border:
-        2px solid #E5A1A6 !important;
-
-    font-weight: bold;
-
+.AL{
+    background:#9C27B0!important;
+    color:#fff!important;
+    border:2px solid #7B1FA2!important;
 }
 
-
-.AL {
-
-    background:
-        #9C27B0 !important;
-
-    color: white !important;
-
-    border:
-        2px solid #7B1FA2 !important;
-
-    font-weight: bold;
-
+.Management{
+    background:#FFF3CD!important;
+    color:#856404!important;
+    border:2px solid #FFDA6A!important;
 }
 
-
-.Management {
-
-    background:
-        #FFF3CD !important;
-
-    color:
-        #856404 !important;
-
-    border:
-        2px solid #FFDA6A !important;
-
-    font-weight: bold;
-
+.FS{
+    background:#ff9800!important;
+    color:#fff!important;
+    border:2px solid #ef6c00!important;
+    font-weight:800!important;
 }
 
+/* ================= CUSTOM ================= */
 
-.duplicate {
-
-    border:
-        3px solid red !important;
-
-    box-shadow:
-        0 0 6px
-        rgba(255,0,0,.6);
-
+.Custom{
+    background:#8D6E63!important;
+    color:#fff!important;
+    border:2px solid #6D4C41!important;
+    font-weight:800!important;
 }
 
+/* DUPLICATE */
 
-/* =====================================================
-   REMOVE BUTTON
-===================================================== */
-
-td button {
-
-    background:
-        #dc3545;
-
-    padding:
-        6px 10px;
-
-    border-radius:
-        5px;
-
-    color: white;
-
-    border: none;
-
-    cursor: pointer;
-
+.duplicate{
+    border:3px solid red!important;
+    box-shadow:0 0 7px rgba(255,0,0,.7)!important;
 }
 
+/* SUMMARY */
 
-/* =====================================================
-   DAILY SUMMARY
-===================================================== */
-
-.summary-row td {
-
-    background: #f7f7f7;
-
-    color: #333333;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    padding: 6px 3px;
-
-    line-height: 1.35;
-
+.summary td{
+    background:#f7f7f7;
+    color:#333;
+    font-size:11px;
+    font-weight:700;
+    padding:6px 2px;
 }
 
-
-.summary-row td:first-child {
-
-    background: #eeeeee;
-
-    color: #555555;
-
-    font-size: 11px;
-
+.summary td:first-child{
+    background:#eee;
 }
 
+/* ================= MOBILE ================= */
 
-/* =====================================================
-   SUMMARY COLORS
-===================================================== */
+@media(max-width:800px){
 
-.summary-am {
-
-    color: #1976D2;
-
-}
-
-
-.summary-pm {
-
-    color: #388E3C;
-
-}
-
-
-.summary-off {
-
-    color: #b4232c;
-
-}
-
-
-.summary-al {
-
-    color: #7B1FA2;
-
-}
-
-
-.summary-mid {
-
-    color: #7B3F21;
-
-}
-
-
-.summary-management {
-
-    color: #E91E63;
-
-}
-
-
-/* =====================================================
-   PRINT
-===================================================== */
-
-@media print {
-
-    #loginPage {
-
-        display: none !important;
-
+    #app{
+        padding:8px;
     }
 
-    .week-controls {
-
-        display: none;
-
+    .header{
+        height:110px;
     }
 
-    .controls {
-
-        display: none;
-
+    .logo{
+        width:100px;
+        height:100px;
     }
 
-    body {
-
-        padding: 0;
-
+    .logo img{
+        max-width:90px;
+        max-height:90px;
     }
 
-    #rosterArea {
+    .title{
+        font-size:20px;
+    }
 
-        padding: 10px;
+    th:first-child,
+    td:first-child{
+        width:120px;
+    }
 
+    th,td{
+        font-size:10px;
+        padding:5px 2px;
+    }
+
+    select{
+        font-size:10px;
+        padding:6px 1px;
+    }
+}
+
+/* ================= PRINT ================= */
+
+@media print{
+
+    #loginPage,
+    .week-controls,
+    .controls{
+        display:none!important;
+    }
+
+    #app{
+        display:block!important;
+        padding:10px;
     }
 
     .AM,
@@ -1059,511 +404,279 @@ td button {
     .MID,
     .Off,
     .AL,
-    .Management {
-
-        -webkit-print-color-adjust:
-            exact;
-
-        print-color-adjust:
-            exact;
-
+    .Management,
+    .FS,
+    .Custom,
+    .summary td{
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
     }
-
-    .summary-row td {
-
-        -webkit-print-color-adjust:
-            exact;
-
-        print-color-adjust:
-            exact;
-
-    }
-
 }
-
 </style>
 
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     LOGIN PAGE
-===================================================== -->
+<!-- =================================================
+     LOGIN
+================================================== -->
 
 <div id="loginPage">
 
-    <div class="login-card">
+<div class="login-card">
 
-        <div class="login-logo">
+    <div class="login-logo">
 
-            <img
-                src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b&am…%22"
-                alt="Dragon Mart Logo"
-                crossorigin="anonymous"
-            >
+        <img
+            src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b"
+            alt="Dragon Mart Logo">
+
+    </div>
+
+    <h1>Dragon Mart</h1>
+
+    <h2>Staff Roster Login</h2>
+
+    <p class="login-subtitle">
+        Please sign in to access the weekly roster
+    </p>
+
+    <form id="loginForm">
+
+        <div class="login-field">
+
+            <label>Username</label>
+
+            <input
+                id="username"
+                type="text"
+                autocomplete="username"
+                placeholder="Enter username"
+                required>
 
         </div>
 
+        <div class="login-field">
 
-        <h1>
-            Dragon Mart
-        </h1>
+            <label>Password</label>
 
-
-        <h2>
-            Staff Roster Login
-        </h2>
-
-
-        <p class="login-subtitle">
-            Please sign in to access the weekly roster
-        </p>
-
-
-        <form id="loginForm">
-
-            <div class="login-field">
-
-                <label for="loginUsername">
-                    Username
-                </label>
+            <div class="pass-box">
 
                 <input
-                    type="text"
-                    id="loginUsername"
-                    placeholder="Enter username"
-                    autocomplete="username"
-                    required
-                >
+                    id="password"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="Enter password"
+                    required>
+
+                <button
+                    type="button"
+                    class="show-pass"
+                    onclick="togglePassword()">👁️</button>
 
             </div>
 
-
-            <div class="login-field">
-
-                <label for="loginPassword">
-                    Password
-                </label>
-
-                <div class="password-wrapper">
-
-                    <input
-                        type="password"
-                        id="loginPassword"
-                        placeholder="Enter password"
-                        autocomplete="current-password"
-                        required
-                    >
-
-                    <button
-                        type="button"
-                        class="show-password"
-                        onclick="togglePassword()"
-                    >
-                        👁️
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="login-button"
-            >
-                🔐 Login
-            </button>
-
-
-            <div
-                id="loginError"
-                class="login-error"
-            ></div>
-
-        </form>
-
-
-        <div class="login-footer">
-            Dragon Mart Weekly Staff Roster
         </div>
 
+        <button
+            class="login-button"
+            type="submit">
+
+            🔐 Login
+
+        </button>
+
+        <div
+            id="loginError"
+            class="login-error">
+        </div>
+
+    </form>
+
+    <div class="login-footer">
+        Dragon Mart Weekly Staff Roster
     </div>
 
 </div>
 
+</div>
 
-<!-- =====================================================
-     ROSTER AREA
-===================================================== -->
+<!-- =================================================
+     APP
+================================================== -->
 
-<div id="rosterArea">
+<div id="app">
 
+<div class="header">
 
-    <!-- HEADER -->
+    <div class="logo">
 
-    <div class="header">
-
-        <div class="logo-container">
-
-            <img
-                id="companyLogo"
-                src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b&am…%22"
-                alt="Dragon Mart Logo"
-                crossorigin="anonymous"
-            >
-
-        </div>
-
-
-        <h2>
-            Dragon Mart Weekly Staff Roster
-        </h2>
+        <img
+            src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b"
+            alt="Dragon Mart Logo">
 
     </div>
 
-
-    <!-- WEEK DATE -->
-
-    <div
-        id="weekDisplay"
-        class="week-display">
+    <div class="title">
+        Dragon Mart Weekly Staff Roster
     </div>
-
-
-    <!-- WEEK BUTTONS -->
-
-    <div class="week-controls">
-
-        <button
-            class="previous-button"
-            onclick="previousWeek()">
-
-            ⬅️ Previous Week
-
-        </button>
-
-
-        <button
-            class="save-week-button"
-            onclick="saveCurrentWeek()">
-
-            💾 Save Roster
-
-        </button>
-
-
-        <button
-            class="next-button"
-            onclick="nextWeek()">
-
-            Next Week ➡️
-
-        </button>
-
-    </div>
-
-
-    <!-- TABLE -->
-
-    <table id="rosterTable"></table>
 
 </div>
 
+<div id="week" class="week"></div>
 
-<!-- =====================================================
-     OTHER BUTTONS
-===================================================== -->
+<div class="week-controls">
+
+    <button
+        class="action prev"
+        onclick="changeWeek(-1)">
+        ⬅️ Previous Week
+    </button>
+
+    <button
+        class="action save"
+        onclick="saveRoster(true)">
+        💾 Save Roster
+    </button>
+
+    <button
+        class="action next"
+        onclick="changeWeek(1)">
+        Next Week ➡️
+    </button>
+
+</div>
+
+<table id="rosterTable"></table>
 
 <div class="controls">
 
-    <button onclick="window.print()">
+    <button
+        class="action print"
+        onclick="window.print()">
         🖨️ Print / PDF
     </button>
 
-
     <button
-        class="csv-button"
+        class="action csv"
         onclick="downloadCSV()">
-
         ⬇️ Download CSV
-
     </button>
 
-
     <button
-        class="image-button"
-        onclick="downloadRosterImage()">
-
+        class="action image"
+        onclick="downloadImage()">
         🖼️ Download Roster as Image
-
     </button>
 
-
     <button
-        class="add-staff-button"
-        onclick="addNewStaff()">
-
+        class="action add"
+        onclick="addStaff()">
         ➕ Add Staff
-
     </button>
 
 </div>
 
+</div>
 
-<!-- =====================================================
-     HTML2CANVAS
-===================================================== -->
+<!-- IMAGE LIBRARY -->
 
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
 
+/* =================================================
+   LOGIN
+================================================= */
 
-/* =====================================================
-   LOGIN DETAILS
-===================================================== */
+const USERNAME = "Dragon Mart";
+const PASSWORD = "CSA2026";
 
-const LOGIN_USERNAME = "Dragon Mart";
-
-const LOGIN_PASSWORD = "CSA2026";
-
-
-/* =====================================================
-   LOGIN CHECK
-===================================================== */
-
-function checkLogin() {
-
-    const loggedIn =
-        sessionStorage.getItem(
-            "DragonMartLoggedIn"
-        );
-
-
-    if (
-        loggedIn === "true"
-    ) {
-
-        showRoster();
-
-    }
-
-    else {
-
-        showLogin();
-
-    }
-
-}
-
-
-/* =====================================================
-   SHOW LOGIN
-===================================================== */
-
-function showLogin() {
-
-    document.getElementById(
-        "loginPage"
-    ).style.display = "flex";
-
-
-    document.getElementById(
-        "rosterArea"
-    ).style.display = "none";
-
-
-    document.querySelector(
-        ".controls"
-    ).style.display = "none";
-
-}
-
-
-/* =====================================================
-   SHOW ROSTER
-===================================================== */
-
-function showRoster() {
-
-    document.getElementById(
-        "loginPage"
-    ).style.display = "none";
-
-
-    document.getElementById(
-        "rosterArea"
-    ).style.display = "block";
-
-
-    document.querySelector(
-        ".controls"
-    ).style.display = "block";
-
-}
-
-
-/* =====================================================
-   LOGIN FORM
-===================================================== */
-
-document.getElementById(
-    "loginForm"
-).addEventListener(
+document
+.getElementById("loginForm")
+.addEventListener(
     "submit",
-    function(event) {
+    function(e){
 
-        event.preventDefault();
-
+        e.preventDefault();
 
         const username =
-            document.getElementById(
-                "loginUsername"
-            ).value.trim();
-
+            document
+            .getElementById("username")
+            .value
+            .trim();
 
         const password =
-            document.getElementById(
-                "loginPassword"
-            ).value;
+            document
+            .getElementById("password")
+            .value;
 
-
-        const error =
-            document.getElementById(
-                "loginError"
-            );
-
-
-        if (
-            username === LOGIN_USERNAME &&
-            password === LOGIN_PASSWORD
-        ) {
+        if(
+            username === USERNAME &&
+            password === PASSWORD
+        ){
 
             sessionStorage.setItem(
                 "DragonMartLoggedIn",
                 "true"
             );
 
+            document
+            .getElementById("loginError")
+            .textContent = "";
 
-            error.textContent = "";
+            openApp();
 
+        }else{
 
-            showRoster();
-
-
-            loadCurrentWeek();
-
-        }
-
-        else {
-
-            error.textContent =
+            document
+            .getElementById("loginError")
+            .textContent =
                 "❌ Incorrect username or password.";
-
         }
-
     }
 );
 
-
-/* =====================================================
-   SHOW / HIDE PASSWORD
-===================================================== */
-
-function togglePassword() {
+function togglePassword(){
 
     const password =
-        document.getElementById(
-            "loginPassword"
-        );
-
+        document.getElementById("password");
 
     const button =
-        document.querySelector(
-            ".show-password"
-        );
+        document.querySelector(".show-pass");
 
-
-    if (
-        password.type === "password"
-    ) {
+    if(password.type === "password"){
 
         password.type = "text";
-
         button.textContent = "🙈";
 
-    }
-
-    else {
+    }else{
 
         password.type = "password";
-
         button.textContent = "👁️";
-
     }
+}
 
+function openApp(){
+
+    document
+    .getElementById("loginPage")
+    .style.display = "none";
+
+    document
+    .getElementById("app")
+    .style.display = "block";
+
+    loadWeek();
 }
 
 
-/* =====================================================
-   TABLE
-===================================================== */
+/* =================================================
+   STAFF
+================================================= */
 
-const table =
-    document.getElementById(
-        "rosterTable"
-    );
-
-
-/* =====================================================
-   START DATE
-===================================================== */
-
-let startDate =
-    new Date(
-        2026,
-        8,
-        7
-    );
-
-
-/* =====================================================
-   CURRENT WEEK
-===================================================== */
-
-let currentWeek = 0;
-
-
-/* =====================================================
-   DAYS
-===================================================== */
-
-const dayNames = [
-
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-    "Sun"
-
-];
-
-
-/* =====================================================
-   STAFF LIST
-===================================================== */
-
-const staffList = [
-
+const STAFF = [
     "Marie",
     "Varun",
     "Allaine",
@@ -1582,1396 +695,1386 @@ const staffList = [
     "Yasmine",
     "Afrith",
     "Alnoor"
-
 ];
 
+const STAFF_STORAGE_KEY =
+    "DragonMartRosterPermanentStaff";
 
-/* =====================================================
+
+function getPermanentStaff(){
+
+    let saved =
+        localStorage.getItem(
+            STAFF_STORAGE_KEY
+        );
+
+    if(saved === null){
+
+        savePermanentStaff(STAFF);
+
+        return [...STAFF];
+    }
+
+    try{
+
+        const parsed =
+            JSON.parse(saved);
+
+        if(Array.isArray(parsed)){
+
+            return parsed;
+        }
+
+    }catch(error){
+
+        console.warn(
+            "Could not read permanent staff:",
+            error
+        );
+    }
+
+    savePermanentStaff(STAFF);
+
+    return [...STAFF];
+}
+
+
+function savePermanentStaff(staffList){
+
+    const unique = [];
+
+    staffList.forEach(name => {
+
+        const cleanName =
+            String(name).trim();
+
+        if(
+            cleanName &&
+            !unique.some(
+                existing =>
+                    existing.toLowerCase() ===
+                    cleanName.toLowerCase()
+            )
+        ){
+
+            unique.push(cleanName);
+        }
+
+    });
+
+    localStorage.setItem(
+        STAFF_STORAGE_KEY,
+        JSON.stringify(unique)
+    );
+}
+
+
+/* =================================================
    DESKS
-===================================================== */
+================================================= */
 
-const desks = [
-
+const DESKS = [
     "BA",
     "F",
     "H",
     "GA",
     "GD"
-
 ];
 
-
-/* =====================================================
-   MANAGEMENT STAFF
-===================================================== */
-
-const managementStaff = [
-
+const MANAGEMENT = [
     "Iswary",
     "April"
+];
 
+const DAYS = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
 ];
 
 
-/* =====================================================
-   SHIFTS
-===================================================== */
+/* =================================================
+   WEEK
+================================================= */
 
-const shifts = [
+let weekNumber = 0;
 
-    "AM",
-    "PM"
-
-];
-
-
-/* =====================================================
-   STORAGE
-===================================================== */
+const FIRST_WEEK =
+    new Date(2026,8,14);
 
 const STORAGE_KEY =
-    "DragonMartWeeklyRoster";
+    "DragonMartRosterWeek_";
 
 
-/* =====================================================
-   USED DESK + SHIFT
-===================================================== */
+function getStartDate(){
 
-let usedDeskShift =
-    Array.from(
-        { length: 7 },
-        () => new Set()
-    );
-
-
-/* =====================================================
-   MID TRACKING
-===================================================== */
-
-let midTaken =
-    Array.from(
-        { length: 7 },
-        () => false
-    );
-
-
-/* =====================================================
-   WEEK STORAGE KEY
-===================================================== */
-
-function getWeekKey() {
-
-    return STORAGE_KEY +
-        "_" +
-        currentWeek;
-
-}
-
-
-/* =====================================================
-   WEEK START DATE
-===================================================== */
-
-function getWeekStartDate() {
-
-    let date =
-        new Date(startDate);
-
+    const date =
+        new Date(FIRST_WEEK);
 
     date.setDate(
-        startDate.getDate() +
-        currentWeek * 7
+        date.getDate() +
+        weekNumber * 7
     );
-
 
     return date;
-
 }
 
 
-/* =====================================================
-   FORMAT DATE
-===================================================== */
-
-function formatDate(date) {
+function formatDate(date){
 
     return (
-
-        String(
-            date.getDate()
-        ).padStart(2,"0")
-
+        String(date.getDate()).padStart(2,"0")
         + "-"
-
-        +
-
-        String(
-            date.getMonth() + 1
+        + String(
+            date.getMonth()+1
         ).padStart(2,"0")
-
         + "-"
-
-        +
-
-        date.getFullYear()
-
+        + date.getFullYear()
     );
-
 }
 
 
-/* =====================================================
-   UPDATE WEEK DISPLAY
-===================================================== */
+/* =================================================
+   LOAD WEEK
+================================================= */
 
-function updateWeekDisplay() {
+function loadWeek(){
 
-    const weekStart =
-        getWeekStartDate();
-
-
-    const weekEnd =
-        new Date(weekStart);
-
-
-    weekEnd.setDate(
-        weekStart.getDate() + 6
-    );
-
-
-    document.getElementById(
-        "weekDisplay"
-    ).innerHTML =
-
-        `Week: ${formatDate(weekStart)}
-        &nbsp; - &nbsp;
-        ${formatDate(weekEnd)}`;
-
-}
-
-
-/* =====================================================
-   TABLE HEADER
-===================================================== */
-
-function createTableHeader() {
-
-    const headerRow =
-        table.insertRow(0);
-
-
-    headerRow.insertCell()
-        .outerHTML =
-        "<th>Staff Name</th>";
-
-
-    const weekStart =
-        getWeekStartDate();
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        let d =
-            new Date(weekStart);
-
-
-        d.setDate(
-            weekStart.getDate() + i
+    const table =
+        document.getElementById(
+            "rosterTable"
         );
-
-
-        headerRow.insertCell()
-            .innerHTML =
-
-            `<strong>${dayNames[i]}</strong><br>` +
-
-            `<strong>${String(
-                d.getDate()
-            ).padStart(2,"0")}-` +
-
-            `${String(
-                d.getMonth() + 1
-            ).padStart(2,"0")}-` +
-
-            `${d.getFullYear()}</strong>`;
-
-    }
-
-
-    headerRow.insertCell()
-        .outerHTML =
-        "<th>Remove</th>";
-
-}
-
-
-/* =====================================================
-   DEFAULT SHIFT
-===================================================== */
-
-function getDefaultShift(
-    day,
-    staffName
-) {
-
-    if (
-        managementStaff.includes(
-            staffName
-        ) &&
-        day <= 4
-    ) {
-
-        return "Management-AM";
-
-    }
-
-
-    return "";
-
-}
-
-
-/* =====================================================
-   SELECT COLOR
-===================================================== */
-
-function applySelectColor(s) {
-
-    if (
-        s.value === ""
-    ) {
-
-        s.className =
-            "SelectShift";
-
-    }
-
-    else if (
-        s.value.endsWith("-AM") &&
-        !s.value.startsWith("Management")
-    ) {
-
-        s.className = "AM";
-
-    }
-
-    else if (
-        s.value.endsWith("-PM") &&
-        !s.value.startsWith("Management")
-    ) {
-
-        s.className = "PM";
-
-    }
-
-    else if (
-        s.value === "MID"
-    ) {
-
-        s.className = "MID";
-
-    }
-
-    else if (
-        s.value === "Off"
-    ) {
-
-        s.className = "Off";
-
-    }
-
-    else if (
-        s.value === "AL"
-    ) {
-
-        s.className = "AL";
-
-    }
-
-    else if (
-        s.value.startsWith("Management")
-    ) {
-
-        s.className = "Management";
-
-    }
-
-}
-
-
-/* =====================================================
-   CREATE SELECT
-===================================================== */
-
-function createSelect(
-    day,
-    staffName,
-    savedValue = null
-) {
-
-    let s =
-        document.createElement("select");
-
-
-    s.add(
-        new Option(
-            "Select Shift",
-            ""
-        )
-    );
-
-
-    let mid =
-        new Option(
-            "MID",
-            "MID"
-        );
-
-
-    if (
-        midTaken[day]
-    ) {
-
-        mid.disabled = true;
-
-    }
-
-
-    s.add(mid);
-
-
-    shifts.forEach(
-        sh => {
-
-            desks.forEach(
-                d => {
-
-                    let o =
-                        new Option(
-                            `${d} (${sh})`,
-                            `${d}-${sh}`
-                        );
-
-
-                    if (
-                        usedDeskShift[day]
-                            .has(o.value)
-                    ) {
-
-                        o.disabled = true;
-
-                    }
-
-
-                    s.add(o);
-
-                }
-            );
-
-        }
-    );
-
-
-    if (
-        managementStaff.includes(
-            staffName
-        )
-    ) {
-
-        shifts.forEach(
-            sh => {
-
-                s.add(
-                    new Option(
-                        `Management (${sh})`,
-                        `Management-${sh}`
-                    )
-                );
-
-            }
-        );
-
-    }
-
-
-    s.add(
-        new Option(
-            "OFF",
-            "Off"
-        )
-    );
-
-
-    s.add(
-        new Option(
-            "AL",
-            "AL"
-        )
-    );
-
-
-    let valueToUse;
-
-
-    if (
-        savedValue !== null
-    ) {
-
-        valueToUse =
-            savedValue;
-
-    }
-
-    else {
-
-        valueToUse =
-            getDefaultShift(
-                day,
-                staffName
-            );
-
-    }
-
-
-    s.value =
-        valueToUse || "";
-
-
-    s.oldValue =
-        s.value;
-
-
-    applySelectColor(s);
-
-
-    if (
-        s.value === "MID"
-    ) {
-
-        midTaken[day] = true;
-
-    }
-
-    else if (
-        s.value &&
-        s.value.includes("-") &&
-        !s.value.startsWith("Management")
-    ) {
-
-        usedDeskShift[day]
-            .add(s.value);
-
-    }
-
-
-    s.onchange =
-        function() {
-
-            if (
-                s.oldValue === "MID"
-            ) {
-
-                midTaken[day] = false;
-
-            }
-
-            else if (
-                s.oldValue &&
-                s.oldValue.includes("-") &&
-                !s.oldValue.startsWith("Management")
-            ) {
-
-                usedDeskShift[day]
-                    .delete(s.oldValue);
-
-            }
-
-
-            if (
-                s.value === "MID"
-            ) {
-
-                midTaken[day] = true;
-
-            }
-
-            else if (
-                s.value &&
-                s.value.includes("-") &&
-                !s.value.startsWith("Management")
-            ) {
-
-                usedDeskShift[day]
-                    .add(s.value);
-
-            }
-
-
-            s.oldValue =
-                s.value;
-
-
-            applySelectColor(s);
-
-            update(day);
-
-            updateAllSummaries();
-
-            checkDuplicateDeskShift();
-
-            saveWeekSilently();
-
-        };
-
-
-    return s;
-
-}
-
-
-/* =====================================================
-   UPDATE OPTIONS
-===================================================== */
-
-function update(day) {
-
-    [
-        ...table.rows
-    ]
-    .slice(1)
-    .forEach(
-        r => {
-
-            if (
-                r.classList.contains(
-                    "summary-row"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            let cell =
-                r.cells[day + 1];
-
-
-            if (!cell)
-                return;
-
-
-            let s =
-                cell.querySelector("select");
-
-
-            if (!s)
-                return;
-
-
-            [
-                ...s.options
-            ]
-            .forEach(
-                o => {
-
-                    if (
-                        o.value === "MID"
-                    ) {
-
-                        o.disabled =
-                            midTaken[day] &&
-                            s.value !== "MID";
-
-                    }
-
-                    else if (
-                        o.value &&
-                        o.value.includes("-") &&
-                        !o.value.startsWith("Management")
-                    ) {
-
-                        o.disabled =
-                            usedDeskShift[day]
-                                .has(o.value)
-                            &&
-                            s.value !== o.value;
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   ADD ROW
-===================================================== */
-
-function addRow(
-    name = "",
-    savedDays = null
-) {
-
-    let r =
-        table.insertRow();
-
-
-    r.insertCell()
-        .innerHTML =
-
-        `<input
-            value="${name}"
-            aria-label="Staff Name"
-        >`;
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        let savedValue =
-            savedDays
-                ? savedDays[i]
-                : null;
-
-
-        r.insertCell()
-            .appendChild(
-                createSelect(
-                    i,
-                    name,
-                    savedValue
-                )
-            );
-
-    }
-
-
-    r.insertCell()
-        .innerHTML =
-
-        `<button
-            onclick="removeRow(this)">
-            ❌
-        </button>`;
-
-}
-
-
-/* =====================================================
-   REMOVE ROW
-===================================================== */
-
-function removeRow(btn) {
-
-    let r =
-        btn.closest("tr");
-
-
-    if (
-        r.classList.contains(
-            "summary-row"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        let s =
-            r.cells[i + 1]
-                .querySelector("select");
-
-
-        if (!s)
-            continue;
-
-
-        if (
-            s.value === "MID"
-        ) {
-
-            midTaken[i] = false;
-
-        }
-
-
-        if (
-            s.value &&
-            s.value.includes("-") &&
-            !s.value.startsWith("Management")
-        ) {
-
-            usedDeskShift[i]
-                .delete(s.value);
-
-        }
-
-
-        update(i);
-
-    }
-
-
-    r.remove();
-
-
-    updateAllSummaries();
-
-    checkDuplicateDeskShift();
-
-    saveWeekSilently();
-
-}
-
-
-/* =====================================================
-   DUPLICATE CHECK
-===================================================== */
-
-function checkDuplicateDeskShift() {
-
-    [
-        ...table.rows
-    ]
-    .slice(1)
-    .forEach(
-        r => {
-
-            if (
-                r.classList.contains(
-                    "summary-row"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            let selections = {};
-
-
-            [
-                ...r.cells
-            ]
-            .slice(1,8)
-            .forEach(
-                cell => {
-
-                    let s =
-                        cell.querySelector(
-                            "select"
-                        );
-
-
-                    if (!s)
-                        return;
-
-
-                    let value =
-                        s.value;
-
-
-                    if (
-                        value &&
-                        value.includes("-") &&
-                        !value.startsWith("Management")
-                    ) {
-
-                        if (
-                            selections[value]
-                        ) {
-
-                            s.classList.add(
-                                "duplicate"
-                            );
-
-                            s.title =
-                                "Duplicate desk + shift!";
-
-                        }
-
-                        else {
-
-                            selections[value] =
-                                true;
-
-                            s.classList.remove(
-                                "duplicate"
-                            );
-
-                            s.title = "";
-
-                        }
-
-                    }
-
-                    else {
-
-                        s.classList.remove(
-                            "duplicate"
-                        );
-
-                        s.title = "";
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   SUMMARY
-===================================================== */
-
-function createSummaryRow() {
-
-    const oldSummary =
-        table.querySelector(
-            ".summary-row"
-        );
-
-
-    if (oldSummary) {
-
-        oldSummary.remove();
-
-    }
-
-
-    const summary =
-        table.insertRow();
-
-
-    summary.className =
-        "summary-row";
-
-
-    summary.insertCell()
-        .innerHTML =
-        "<strong>Daily Summary</strong>";
-
-
-    for (
-        let day = 0;
-        day < 7;
-        day++
-    ) {
-
-        let cell =
-            summary.insertCell();
-
-
-        cell.id =
-            `summary-${day}`;
-
-    }
-
-
-    summary.insertCell();
-
-
-    updateAllSummaries();
-
-}
-
-
-/* =====================================================
-   DAILY SUMMARY
-===================================================== */
-
-function updateAllSummaries() {
-
-    for (
-        let day = 0;
-        day < 7;
-        day++
-    ) {
-
-        const cell =
-            document.getElementById(
-                `summary-${day}`
-            );
-
-
-        if (!cell)
-            continue;
-
-
-        let counts = {
-
-            AM: 0,
-            PM: 0,
-            OFF: 0,
-            AL: 0,
-            MID: 0,
-            MANAGEMENT: 0
-
-        };
-
-
-        [
-            ...table.rows
-        ]
-        .slice(1)
-        .forEach(
-            row => {
-
-                if (
-                    row.classList.contains(
-                        "summary-row"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                const staffCell =
-                    row.cells[day + 1];
-
-
-                if (!staffCell)
-                    return;
-
-
-                const select =
-                    staffCell.querySelector(
-                        "select"
-                    );
-
-
-                if (!select)
-                    return;
-
-
-                const value =
-                    select.value;
-
-
-                if (
-                    value === "MID"
-                ) {
-
-                    counts.MID++;
-
-                }
-
-                else if (
-                    value === "Off"
-                ) {
-
-                    counts.OFF++;
-
-                }
-
-                else if (
-                    value === "AL"
-                ) {
-
-                    counts.AL++;
-
-                }
-
-                else if (
-                    value.startsWith(
-                        "Management"
-                    )
-                ) {
-
-                    counts.MANAGEMENT++;
-
-                }
-
-                else if (
-                    value.endsWith("-AM")
-                ) {
-
-                    counts.AM++;
-
-                }
-
-                else if (
-                    value.endsWith("-PM")
-                ) {
-
-                    counts.PM++;
-
-                }
-
-            }
-        );
-
-
-        cell.innerHTML =
-
-            `<span class="summary-am">
-                AM - ${String(counts.AM).padStart(2,"0")}
-            </span>
-            &nbsp;|&nbsp;
-
-            <span class="summary-pm">
-                PM - ${String(counts.PM).padStart(2,"0")}
-            </span>
-            &nbsp;|&nbsp;
-
-            <span class="summary-off">
-                OFF - ${String(counts.OFF).padStart(2,"0")}
-            </span>
-            &nbsp;|&nbsp;
-
-            <span class="summary-al">
-                AL - ${String(counts.AL).padStart(2,"0")}
-            </span>
-            &nbsp;|&nbsp;
-
-            <span class="summary-mid">
-                MID - ${String(counts.MID).padStart(2,"0")}
-            </span>
-
-            ${
-                counts.MANAGEMENT > 0
-                ?
-                `&nbsp;|&nbsp;
-                <span class="summary-management">
-                    MGMT - ${String(
-                        counts.MANAGEMENT
-                    ).padStart(2,"0")}
-                </span>`
-                : ""
-            }`;
-
-    }
-
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-function saveCurrentWeek() {
-
-    saveWeekSilently();
-
-
-    alert(
-        "✅ Week saved successfully!"
-    );
-
-}
-
-
-function saveWeekSilently() {
-
-    let rows = [];
-
-
-    [
-        ...table.rows
-    ]
-    .slice(1)
-    .forEach(
-        row => {
-
-            if (
-                row.classList.contains(
-                    "summary-row"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            let input =
-                row.cells[0]
-                    .querySelector("input");
-
-
-            let staffName =
-                input
-                    ? input.value
-                    : "";
-
-
-            let days = [];
-
-
-            for (
-                let day = 0;
-                day < 7;
-                day++
-            ) {
-
-                let select =
-                    row.cells[day + 1]
-                        .querySelector("select");
-
-
-                days.push(
-                    select
-                        ? select.value
-                        : ""
-                );
-
-            }
-
-
-            rows.push({
-
-                name:
-                    staffName,
-
-                days:
-                    days
-
-            });
-
-        }
-    );
-
-
-    localStorage.setItem(
-        getWeekKey(),
-        JSON.stringify(rows)
-    );
-
-}
-
-
-/* =====================================================
-   LOAD CURRENT WEEK
-===================================================== */
-
-function loadCurrentWeek() {
 
     table.innerHTML = "";
 
-
-    usedDeskShift =
-        Array.from(
-            { length: 7 },
-            () => new Set()
-        );
-
-
-    midTaken =
-        Array.from(
-            { length: 7 },
-            () => false
-        );
-
-
-    createTableHeader();
-
-
-    let saved =
-        localStorage.getItem(
-            getWeekKey()
-        );
-
-
-    if (saved) {
-
-        let rows;
-
-
-        try {
-
-            rows =
-                JSON.parse(saved);
-
-        }
-
-        catch {
-
-            rows = [];
-
-        }
-
-
-        rows.forEach(
-            person => {
-
-                addRow(
-                    person.name,
-                    person.days
-                );
-
-            }
-        );
-
-    }
-
-    else {
-
-        staffList.forEach(
-            name => {
-
-                addRow(name);
-
-            }
-        );
-
-    }
-
-
-    createSummaryRow();
-
-
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
-
-        update(i);
-
-    }
-
-
-    checkDuplicateDeskShift();
-
-    updateAllSummaries();
-
     updateWeekDisplay();
 
-}
+    createHeader();
 
+    let data = null;
 
-/* =====================================================
-   ADD NEW STAFF
-===================================================== */
-
-function addNewStaff() {
-
-    const name =
-        prompt(
-            "👤 Enter new staff name:"
+    const saved =
+        localStorage.getItem(
+            STORAGE_KEY + weekNumber
         );
 
+    if(saved){
 
-    if (
-        name === null
-    ) {
+        try{
 
-        return;
+            data = JSON.parse(saved);
 
+        }catch(error){
+
+            data = null;
+        }
     }
 
+    const permanentStaff =
+        getPermanentStaff();
 
-    const staffName =
-        name.trim();
+    if(!Array.isArray(data)){
 
+        data =
+            permanentStaff.map(name => ({
 
-    if (!staffName) {
+                name:name,
 
-        alert(
-            "⚠️ Please enter a staff name."
-        );
+                days:[
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""
+                ]
 
-        return;
+            }));
 
-    }
+    }else{
 
+        permanentStaff.forEach(name => {
 
-    let existingNames = [];
-
-
-    [
-        ...table.rows
-    ]
-    .slice(1)
-    .forEach(
-        row => {
-
-            if (
-                row.classList.contains(
-                    "summary-row"
-                )
-            ) {
-
-                return;
-
-            }
-
-
-            const input =
-                row.cells[0]
-                    ?.querySelector("input");
-
-
-            if (input) {
-
-                existingNames.push(
-                    input.value
+            const exists =
+                data.some(
+                    person =>
+                        String(person.name)
+                        .trim()
+                        .toLowerCase() ===
+                        name
                         .trim()
                         .toLowerCase()
                 );
 
+            if(!exists){
+
+                data.push({
+
+                    name:name,
+
+                    days:[
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ]
+
+                });
             }
 
+        });
+    }
+
+    data.forEach(person => {
+
+        addStaffRow(
+            person.name,
+            person.days
+        );
+
+    });
+
+    createSummary();
+
+    updateDuplicate();
+    updateSummary();
+}
+
+
+/* =================================================
+   WEEK DISPLAY
+================================================= */
+
+function updateWeekDisplay(){
+
+    const start =
+        getStartDate();
+
+    const end =
+        new Date(start);
+
+    end.setDate(
+        start.getDate() + 6
+    );
+
+    document
+    .getElementById("week")
+    .textContent =
+        "Week: " +
+        formatDate(start) +
+        " - " +
+        formatDate(end);
+}
+
+
+/* =================================================
+   HEADER
+================================================= */
+
+function createHeader(){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
+        );
+
+    const row =
+        table.insertRow();
+
+    row.insertCell().outerHTML =
+        "<th>Staff Name</th>";
+
+    const start =
+        getStartDate();
+
+    DAYS.forEach(
+        (day,index) => {
+
+            const date =
+                new Date(start);
+
+            date.setDate(
+                start.getDate() + index
+            );
+
+            row.insertCell().outerHTML =
+                `
+                <th>
+                    ${day}<br>
+                    ${formatDate(date)}
+                </th>
+                `;
+        }
+    );
+}
+
+
+/* =================================================
+   STAFF ROW
+================================================= */
+
+function addStaffRow(
+    name,
+    days
+){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
+        );
+
+    const row =
+        table.insertRow();
+
+    const nameCell =
+        row.insertCell();
+
+    const input =
+        document.createElement(
+            "input"
+        );
+
+    input.className =
+        "name-input";
+
+    input.value =
+        name || "";
+
+    input.onchange =
+        () => saveRoster(false);
+
+    nameCell.appendChild(input);
+
+    for(let day=0;day<7;day++){
+
+        row.insertCell().appendChild(
+
+            makeShiftSelect(
+                name,
+                days?.[day] || "",
+                day
+            )
+
+        );
+    }
+}
+
+
+/* =================================================
+   CUSTOM VALUE
+================================================= */
+
+/*
+   Custom values are stored like:
+
+   CUSTOM::Meeting
+   CUSTOM::Training
+   CUSTOM::Special Duty
+
+   This makes them easy to save and restore.
+*/
+
+function isCustomValue(value){
+
+    return (
+        typeof value === "string" &&
+        value.startsWith("CUSTOM::")
+    );
+}
+
+
+function getCustomText(value){
+
+    if(!isCustomValue(value))
+        return "";
+
+    return value.substring(8);
+}
+
+
+function createCustomValue(text){
+
+    return "CUSTOM::" + text;
+}
+
+
+/* =================================================
+   SHIFT SELECT
+================================================= */
+
+function makeShiftSelect(
+    staffName,
+    savedValue,
+    day
+){
+
+    const select =
+        document.createElement(
+            "select"
+        );
+
+    let html = `
+        <option value="">
+            Select Shift
+        </option>
+
+        <option value="MID">
+            MID
+        </option>
+    `;
+
+
+    /* AM */
+
+    html += DESKS.map(
+        desk =>
+        `
+        <option value="${desk}-AM">
+            ${desk} (AM)
+        </option>
+        `
+    ).join("");
+
+
+    /* PM */
+
+    html += DESKS.map(
+        desk =>
+        `
+        <option value="${desk}-PM">
+            ${desk} (PM)
+        </option>
+        `
+    ).join("");
+
+
+    /* FS */
+
+    html += DESKS.map(
+        desk =>
+        `
+        <option value="${desk} FS">
+            ${desk} (FS)
+        </option>
+        `
+    ).join("");
+
+
+    /* MANAGEMENT */
+
+    if(
+        MANAGEMENT.includes(
+            staffName
+        )
+    ){
+
+        html += `
+            <option value="Management-AM">
+                Management (AM)
+            </option>
+
+            <option value="Management-PM">
+                Management (PM)
+            </option>
+        `;
+    }
+
+
+    /* OTHER + CUSTOM */
+
+    html += `
+        <option value="Off">
+            OFF
+        </option>
+
+        <option value="AL">
+            AL
+        </option>
+
+        <option value="CUSTOM">
+            CUSTOM
+        </option>
+    `;
+
+
+    select.innerHTML = html;
+
+
+    /*
+       RESTORE CUSTOM VALUE
+    */
+
+    if(isCustomValue(savedValue)){
+
+        const customText =
+            getCustomText(savedValue);
+
+        const customOption =
+            document.createElement(
+                "option"
+            );
+
+        customOption.value =
+            savedValue;
+
+        customOption.textContent =
+            customText || "CUSTOM";
+
+        customOption.dataset.custom =
+            "true";
+
+        select.appendChild(
+            customOption
+        );
+    }
+
+
+    /*
+       RESTORE NORMAL VALUE
+    */
+
+    select.value =
+        savedValue || "";
+
+
+    applyColor(select);
+
+
+    /*
+       CHANGE
+    */
+
+    select.addEventListener(
+        "change",
+        function(){
+
+            /*
+               CUSTOM SELECTED
+            */
+
+            if(
+                select.value === "CUSTOM"
+            ){
+
+                const customText =
+                    prompt(
+                        "✏️ Enter your custom option:"
+                    );
+
+
+                /*
+                   Cancel
+                   or empty
+                */
+
+                if(
+                    customText === null ||
+                    !customText.trim()
+                ){
+
+                    select.value = "";
+
+                    applyColor(select);
+
+                    updateDuplicate();
+
+                    updateSummary();
+
+                    saveRoster(false);
+
+                    return;
+                }
+
+
+                const cleanText =
+                    customText
+                    .trim();
+
+
+                const customValue =
+                    createCustomValue(
+                        cleanText
+                    );
+
+
+                /*
+                   Remove old custom option
+                */
+
+                [...select.options]
+                .forEach(option => {
+
+                    if(
+                        option.dataset.custom ===
+                        "true"
+                    ){
+
+                        option.remove();
+                    }
+
+                });
+
+
+                /*
+                   Create new custom option
+                */
+
+                const customOption =
+                    document.createElement(
+                        "option"
+                    );
+
+                customOption.value =
+                    customValue;
+
+                customOption.textContent =
+                    cleanText;
+
+                customOption.dataset.custom =
+                    "true";
+
+
+                select.appendChild(
+                    customOption
+                );
+
+
+                select.value =
+                    customValue;
+            }
+
+
+            applyColor(select);
+
+            updateDuplicate();
+
+            updateSummary();
+
+            saveRoster(false);
         }
     );
 
 
-    if (
-        existingNames.includes(
-            staffName.toLowerCase()
-        )
-    ) {
+    return select;
+}
 
-        alert(
-            "⚠️ This staff member already exists."
+
+/* =================================================
+   COLORS
+================================================= */
+
+function applyColor(select){
+
+    const value =
+        select.value;
+
+    select.className = "";
+
+
+    if(!value){
+
+        select.className =
+            "SelectShift";
+
+    }else if(
+        value === "MID"
+    ){
+
+        select.className =
+            "MID";
+
+    }else if(
+        value === "Off"
+    ){
+
+        select.className =
+            "Off";
+
+    }else if(
+        value === "AL"
+    ){
+
+        select.className =
+            "AL";
+
+    }else if(
+        isCustomValue(value)
+    ){
+
+        select.className =
+            "Custom";
+
+    }else if(
+        value.startsWith(
+            "Management"
+        )
+    ){
+
+        select.className =
+            "Management";
+
+    }else if(
+        value.endsWith(" FS")
+    ){
+
+        select.className =
+            "FS";
+
+    }else if(
+        value.endsWith("-AM")
+    ){
+
+        select.className =
+            "AM";
+
+    }else if(
+        value.endsWith("-PM")
+    ){
+
+        select.className =
+            "PM";
+    }
+}
+
+
+/* =================================================
+   DUPLICATE
+================================================= */
+
+function updateDuplicate(){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
         );
 
+
+    /*
+       Remove old duplicate borders.
+    */
+
+    [...table.rows]
+    .slice(1)
+    .forEach(row => {
+
+        if(
+            row.classList.contains(
+                "summary"
+            )
+        )
+            return;
+
+        row
+        .querySelectorAll("select")
+        .forEach(select => {
+
+            select.classList.remove(
+                "duplicate"
+            );
+
+            select.title = "";
+        });
+
+    });
+
+
+    /*
+       Same staff duplicate.
+    */
+
+    [...table.rows]
+    .slice(1)
+    .forEach(row => {
+
+        if(
+            row.classList.contains(
+                "summary"
+            )
+        )
+            return;
+
+        const seen = {};
+
+        row
+        .querySelectorAll("select")
+        .forEach(select => {
+
+            const value =
+                select.value;
+
+            if(!value)
+                return;
+
+
+            /*
+               Custom values are excluded
+               from duplicate checking.
+            */
+
+            if(
+                value === "MID" ||
+                value === "Off" ||
+                value === "AL" ||
+                value === "FS" ||
+                isCustomValue(value) ||
+                value.startsWith(
+                    "Management"
+                )
+            )
+                return;
+
+
+            if(seen[value]){
+
+                select.classList.add(
+                    "duplicate"
+                );
+
+                select.title =
+                    "Duplicate shift in this staff row";
+
+            }else{
+
+                seen[value] = true;
+            }
+
+        });
+
+    });
+
+
+    /*
+       Same day duplicate.
+    */
+
+    for(
+        let day=0;
+        day<7;
+        day++
+    ){
+
+        const used = {};
+
+        [...table.rows]
+        .slice(1)
+        .forEach(row => {
+
+            if(
+                row.classList.contains(
+                    "summary"
+                )
+            )
+                return;
+
+            const select =
+                row.cells[day+1]
+                ?.querySelector(
+                    "select"
+                );
+
+            if(!select)
+                return;
+
+            const value =
+                select.value;
+
+
+            if(
+                value &&
+                value !== "MID" &&
+                value !== "Off" &&
+                value !== "AL" &&
+                value !== "FS" &&
+                !isCustomValue(value) &&
+                !value.startsWith(
+                    "Management"
+                ) &&
+                !value.endsWith(
+                    " FS"
+                )
+            ){
+
+                used[value] = true;
+            }
+        });
+
+
+        [...table.rows]
+        .slice(1)
+        .forEach(row => {
+
+            if(
+                row.classList.contains(
+                    "summary"
+                )
+            )
+                return;
+
+            const select =
+                row.cells[day+1]
+                ?.querySelector(
+                    "select"
+                );
+
+            if(!select)
+                return;
+
+
+            [...select.options]
+            .forEach(option => {
+
+                option.disabled = false;
+
+
+                if(
+                    used[option.value] &&
+                    option.value !==
+                        select.value &&
+                    option.value &&
+                    option.value !== "MID" &&
+                    option.value !== "Off" &&
+                    option.value !== "AL" &&
+                    option.value !== "FS" &&
+                    !isCustomValue(
+                        option.value
+                    ) &&
+                    !option.value.startsWith(
+                        "Management"
+                    ) &&
+                    !option.value.endsWith(
+                        " FS"
+                    )
+                ){
+
+                    option.disabled = true;
+                }
+
+            });
+        });
+    }
+}
+
+
+/* =================================================
+   SUMMARY
+================================================= */
+
+function createSummary(){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
+        );
+
+    const row =
+        table.insertRow();
+
+    row.className =
+        "summary";
+
+    row.insertCell().textContent =
+        "Daily Summary";
+
+    for(let i=0;i<7;i++){
+
+        row.insertCell();
+    }
+}
+
+
+function updateSummary(){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
+        );
+
+    const row =
+        table.querySelector(
+            ".summary"
+        );
+
+    if(!row)
         return;
 
+
+    for(
+        let day=0;
+        day<7;
+        day++
+    ){
+
+        const count = {
+
+            AM:0,
+            PM:0,
+            OFF:0,
+            AL:0,
+            MID:0,
+            FS:0,
+            CUSTOM:0
+
+        };
+
+
+        [...table.rows]
+        .slice(1)
+        .forEach(r => {
+
+            if(
+                r.classList.contains(
+                    "summary"
+                )
+            )
+                return;
+
+
+            const select =
+                r.cells[day+1]
+                ?.querySelector(
+                    "select"
+                );
+
+            if(!select)
+                return;
+
+
+            const value =
+                select.value;
+
+
+            if(value === "MID")
+                count.MID++;
+
+            else if(
+                value === "Off"
+            )
+                count.OFF++;
+
+            else if(
+                value === "AL"
+            )
+                count.AL++;
+
+            else if(
+                value === "FS" ||
+                value.endsWith(" FS")
+            )
+                count.FS++;
+
+            else if(
+                isCustomValue(value)
+            )
+                count.CUSTOM++;
+
+            else if(
+                value.endsWith("-AM")
+            )
+                count.AM++;
+
+            else if(
+                value.endsWith("-PM")
+            )
+                count.PM++;
+        });
+
+
+        row.cells[day+1].textContent =
+            `AM ${count.AM} | ` +
+            `PM ${count.PM} | ` +
+            `OFF ${count.OFF} | ` +
+            `AL ${count.AL} | ` +
+            `MID ${count.MID} | ` +
+            `FS ${count.FS} | ` +
+            `CUSTOM ${count.CUSTOM}`;
     }
+}
 
 
-    const summaryRow =
-        table.querySelector(
-            ".summary-row"
+/* =================================================
+   SAVE
+================================================= */
+
+function saveRoster(show){
+
+    const table =
+        document.getElementById(
+            "rosterTable"
         );
 
+    const data = [];
 
-    if (summaryRow) {
 
-        const row =
-            table.insertRow(
-                summaryRow.rowIndex
+    [...table.rows]
+    .slice(1)
+    .forEach(row => {
+
+        if(
+            row.classList.contains(
+                "summary"
+            )
+        )
+            return;
+
+
+        const input =
+            row.cells[0]
+            ?.querySelector(
+                "input"
             );
 
 
-        const nameCell =
+        const days = [];
+
+
+        for(
+            let i=1;
+            i<=7;
+            i++
+        ){
+
+            const select =
+                row.cells[i]
+                ?.querySelector(
+                    "select"
+                );
+
+
+            days.push(
+                select?.value || ""
+            );
+        }
+
+
+        data.push({
+
+            name:
+                input?.value || "",
+
+            days:days
+
+        });
+    });
+
+
+    localStorage.setItem(
+
+        STORAGE_KEY + weekNumber,
+
+        JSON.stringify(data)
+
+    );
+
+
+    /*
+       Make currently existing staff
+       active for current + future weeks.
+
+       IMPORTANT:
+       This does NOT change past saved weeks.
+    */
+
+    const currentPermanentStaff =
+        getPermanentStaff();
+
+
+    const currentNames =
+        data
+        .map(person =>
+            String(person.name).trim()
+        )
+        .filter(Boolean);
+
+
+    savePermanentStaff([
+        ...currentPermanentStaff,
+        ...currentNames
+    ]);
+
+
+    if(show){
+
+        alert(
+            "✅ Roster saved successfully!"
+        );
+    }
+}
+
+
+/* =================================================
+   WEEK CHANGE
+================================================= */
+
+function changeWeek(amount){
+
+    saveRoster(false);
+
+    weekNumber += amount;
+
+
+    if(
+        weekNumber < 0
+    ){
+
+        weekNumber = 0;
+    }
+
+
+    loadWeek();
+}
+
+
+/* =================================================
+   ADD / REMOVE STAFF
+================================================= */
+
+function addStaff(){
+
+    const choice =
+        prompt(
+            "👤 Staff Management\n\n" +
+            "1 - Add Staff\n" +
+            "2 - Remove Staff\n" +
+            "3 - Cancel\n\n" +
+            "Enter 1, 2 or 3:"
+        );
+
+
+    if(
+        choice === null ||
+        choice === "3"
+    ){
+
+        return;
+    }
+
+
+    /* =================================================
+       ADD STAFF
+    ================================================= */
+
+    if(choice === "1"){
+
+        const name =
+            prompt(
+                "👤 Enter new staff name:"
+            );
+
+
+        if(name === null)
+            return;
+
+
+        const newName =
+            name.trim();
+
+
+        if(!newName){
+
+            alert(
+                "⚠️ Please enter a valid staff name."
+            );
+
+            return;
+        }
+
+
+        const table =
+            document.getElementById(
+                "rosterTable"
+            );
+
+
+        const existing =
+            [...table.rows]
+            .slice(1)
+            .filter(
+                row =>
+                    !row.classList.contains(
+                        "summary"
+                    )
+            )
+            .map(
+                row =>
+                    row.cells[0]
+                    ?.querySelector(
+                        "input"
+                    )
+                    ?.value
+                    .trim()
+                    .toLowerCase()
+            );
+
+
+        if(
+            existing.includes(
+                newName.toLowerCase()
+            )
+        ){
+
+            alert(
+                "⚠️ This staff member already exists."
+            );
+
+            return;
+        }
+
+
+        const permanentStaff =
+            getPermanentStaff();
+
+
+        const permanentExists =
+            permanentStaff.some(
+                staff =>
+                    staff.toLowerCase() ===
+                    newName.toLowerCase()
+            );
+
+
+        if(permanentExists){
+
+            alert(
+                "⚠️ This staff member already exists."
+            );
+
+            return;
+        }
+
+
+        savePermanentStaff([
+            ...permanentStaff,
+            newName
+        ]);
+
+
+        /*
+           ADD TO CURRENT TABLE
+        */
+
+        const summary =
+            table.querySelector(
+                ".summary"
+            );
+
+
+        const row =
+            table.insertRow(
+                summary
+                    ? summary.rowIndex
+                    : table.rows.length
+            );
+
+
+        const cell =
             row.insertCell();
 
 
@@ -2981,837 +2084,1337 @@ function addNewStaff() {
             );
 
 
+        input.className =
+            "name-input";
+
         input.value =
-            staffName;
+            newName;
 
 
-        input.setAttribute(
-            "aria-label",
-            "Staff Name"
-        );
+        input.onchange =
+            () => saveRoster(false);
 
 
-        nameCell.appendChild(input);
+        cell.appendChild(input);
 
 
-        for (
-            let i = 0;
-            i < 7;
-            i++
-        ) {
+        for(
+            let day=0;
+            day<7;
+            day++
+        ){
 
-            row.insertCell()
-                .appendChild(
-                    createSelect(
-                        i,
-                        staffName,
-                        ""
-                    )
-                );
+            row.insertCell().appendChild(
 
+                makeShiftSelect(
+                    newName,
+                    "",
+                    day
+                )
+
+            );
         }
 
 
-        row.insertCell()
-            .innerHTML =
+        /*
+           UPDATE SAVED FUTURE WEEKS ONLY
+        */
 
-            `<button
-                onclick="removeRow(this)">
-                ❌
-            </button>`;
-
-    }
-
-    else {
-
-        addRow(staffName);
-
-    }
+        const storageKeys = [];
 
 
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
+        for(
+            let i=0;
+            i<localStorage.length;
+            i++
+        ){
 
-        update(i);
-
-    }
-
-
-    updateAllSummaries();
-
-    checkDuplicateDeskShift();
-
-    saveWeekSilently();
+            const key =
+                localStorage.key(i);
 
 
-    alert(
-        `✅ ${staffName} has been added to the roster!`
-    );
+            if(
+                key &&
+                key.startsWith(
+                    STORAGE_KEY
+                )
+            ){
 
-}
-
-
-/* =====================================================
-   NEXT WEEK
-===================================================== */
-
-function nextWeek() {
-
-    saveWeekSilently();
-
-    currentWeek++;
-
-    loadCurrentWeek();
-
-}
+                storageKeys.push(key);
+            }
+        }
 
 
-/* =====================================================
-   PREVIOUS WEEK
-===================================================== */
+        storageKeys.forEach(key => {
 
-function previousWeek() {
-
-    saveWeekSilently();
-
-
-    if (
-        currentWeek > 0
-    ) {
-
-        currentWeek--;
-
-        loadCurrentWeek();
-
-    }
-
-    else {
-
-        alert(
-            "This is the first saved week."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   DOWNLOAD CSV
-===================================================== */
-
-function downloadCSV() {
-
-    let csv = [];
-
-
-    [
-        ...table.rows
-    ]
-    .forEach(
-        row => {
-
-            let cols =
-                row.querySelectorAll(
-                    "th, td"
+            const savedWeekNumber =
+                parseInt(
+                    key.replace(
+                        STORAGE_KEY,
+                        ""
+                    ),
+                    10
                 );
 
 
-            let rowData = [];
+            if(
+                !isNaN(savedWeekNumber) &&
+                savedWeekNumber > weekNumber
+            ){
 
+                try{
 
-            cols.forEach(
-                (col,index) => {
-
-                    if (
-                        index === 0 &&
-                        row === table.rows[0]
-                    ) {
-
-                        rowData.push(
-                            col.innerText.trim()
+                    const weekData =
+                        JSON.parse(
+                            localStorage.getItem(
+                                key
+                            )
                         );
 
-                    }
 
-                    else if (
-                        index === 0 &&
-                        row.classList.contains(
-                            "summary-row"
+                    if(
+                        Array.isArray(
+                            weekData
                         )
-                    ) {
+                    ){
 
-                        rowData.push(
-                            "Daily Summary"
-                        );
-
-                    }
-
-                    else if (
-                        index === 0
-                    ) {
-
-                        let input =
-                            col.querySelector(
-                                "input"
+                        const exists =
+                            weekData.some(
+                                person =>
+                                    String(
+                                        person.name
+                                    )
+                                    .trim()
+                                    .toLowerCase() ===
+                                    newName
+                                    .toLowerCase()
                             );
 
 
-                        rowData.push(
-                            input
-                                ? input.value.trim()
-                                : ""
-                        );
+                        if(!exists){
 
-                    }
+                            weekData.push({
 
-                    else if (
-                        col.querySelector(
-                            "select"
-                        )
-                    ) {
+                                name:newName,
 
-                        let value =
-                            col.querySelector(
-                                "select"
-                            ).value;
+                                days:[
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    ""
+                                ]
+
+                            });
 
 
-                        rowData.push(
-
-                            value === "Off"
-                                ? "OFF"
-                                :
-                            value ||
-                            "Select Shift"
-
-                        );
-
-                    }
-
-                    else {
-
-                        rowData.push(
-                            col.innerText
-                                .replace(
-                                    /\s+/g,
-                                    " "
+                            localStorage.setItem(
+                                key,
+                                JSON.stringify(
+                                    weekData
                                 )
-                                .trim()
-                        );
-
+                            );
+                        }
                     }
 
+                }catch(error){
+
+                    console.warn(
+                        "Could not update future week:",
+                        key,
+                        error
+                    );
                 }
-            );
-
-
-            csv.push(
-
-                rowData
-                    .map(
-                        value =>
-                            `"${String(value)
-                                .replace(
-                                    /"/g,
-                                    '""'
-                                )}"`
-                    )
-                    .join(",")
-
-            );
-
-        }
-    );
-
-
-    let blob =
-        new Blob(
-            [csv.join("\n")],
-            {
-                type: "text/csv"
             }
-        );
+        });
 
 
-    let link =
-        document.createElement("a");
+        updateDuplicate();
 
+        updateSummary();
 
-    link.href =
-        URL.createObjectURL(blob);
+        saveRoster(false);
 
-
-    link.download =
-        "Dragon_Mart_Weekly_Roster.csv";
-
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-}
-
-
-/* =====================================================
-   DOWNLOAD ROSTER AS IMAGE
-===================================================== */
-
-async function downloadRosterImage() {
-
-    const roster =
-        document.getElementById(
-            "rosterArea"
-        );
-
-
-    if (
-        typeof html2canvas ===
-        "undefined"
-    ) {
 
         alert(
-            "Please wait for the image library to load."
+            "✅ " +
+            newName +
+            " has been added.\n\n" +
+            "Current week + future weeks updated.\n" +
+            "Past weeks were not changed."
         );
 
-        return;
 
+        return;
     }
 
 
-    const originalSelects =
-        roster.querySelectorAll(
-            "select"
-        );
+    /* =================================================
+       REMOVE STAFF
+    ================================================= */
+
+    if(choice === "2"){
+
+        const permanentStaff =
+            getPermanentStaff();
 
 
-    const selectedValues =
-        Array.from(
-            originalSelects
-        )
-        .map(
-            select =>
-                select.value
-        );
+        if(
+            permanentStaff.length === 0
+        ){
 
+            alert(
+                "⚠️ No staff available to remove."
+            );
 
-    const clone =
-        roster.cloneNode(true);
-
-
-    clone.style.position =
-        "absolute";
-
-
-    clone.style.left =
-        "-100000px";
-
-
-    clone.style.top =
-        "0";
-
-
-    clone.style.width =
-        "1700px";
-
-
-    clone.style.background =
-        "#ffffff";
-
-
-    clone.style.padding =
-        "30px";
-
-
-    clone.style.boxSizing =
-        "border-box";
-
-
-    const inputs =
-        clone.querySelectorAll(
-            "input"
-        );
-
-
-    inputs.forEach(
-        input => {
-
-            const text =
-                document.createElement(
-                    "div"
-                );
-
-
-            text.textContent =
-                input.value || "";
-
-
-            text.style.fontFamily =
-                '"Segoe UI", Arial, sans-serif';
-
-
-            text.style.fontSize =
-                "17px";
-
-
-            text.style.fontWeight =
-                "700";
-
-
-            text.style.color =
-                "#222222";
-
-
-            text.style.textAlign =
-                "left";
-
-
-            text.style.padding =
-                "8px 12px";
-
-
-            text.style.width =
-                "100%";
-
-
-            text.style.minWidth =
-                "190px";
-
-
-            text.style.boxSizing =
-                "border-box";
-
-
-            text.style.whiteSpace =
-                "nowrap";
-
-
-            input.parentNode
-                .replaceChild(
-                    text,
-                    input
-                );
-
+            return;
         }
-    );
 
 
-    const cloneSelects =
-        clone.querySelectorAll(
-            "select"
+        const staffList =
+            permanentStaff
+            .map(
+                (staff,index) =>
+                    `${index + 1}. ${staff}`
+            )
+            .join("\n");
+
+
+        const removeName =
+            prompt(
+                "🗑️ Remove Staff\n\n" +
+                "Current Staff:\n\n" +
+                staffList +
+                "\n\n" +
+                "Enter the staff name to remove:"
+            );
+
+
+        if(removeName === null)
+            return;
+
+
+        const cleanRemoveName =
+            removeName.trim();
+
+
+        if(!cleanRemoveName){
+
+            alert(
+                "⚠️ Please enter a staff name."
+            );
+
+            return;
+        }
+
+
+        const existingStaff =
+            permanentStaff.find(
+                staff =>
+                    staff.toLowerCase() ===
+                    cleanRemoveName.toLowerCase()
+            );
+
+
+        if(!existingStaff){
+
+            alert(
+                `❌ "${cleanRemoveName}" was not found in the staff list.`
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                `⚠️ Are you sure you want to remove "${existingStaff}"?\n\n` +
+                `This will remove the staff member from:\n` +
+                `• Current week\n` +
+                `• Future weeks\n\n` +
+                `Past weeks will NOT be changed.`
+            );
+
+
+        if(!confirmed)
+            return;
+
+
+        const updatedStaff =
+            permanentStaff.filter(
+                staff =>
+                    staff.toLowerCase() !==
+                    existingStaff.toLowerCase()
+            );
+
+
+        savePermanentStaff(
+            updatedStaff
         );
 
 
-    cloneSelects.forEach(
-        (
-            select,
-            index
-        ) => {
+        /*
+           REMOVE FROM SAVED FUTURE WEEKS ONLY
+        */
 
-            const value =
-                selectedValues[index] ||
-                "";
+        const storageKeys = [];
 
 
-            let textValue =
-                "Select Shift";
+        for(
+            let i=0;
+            i<localStorage.length;
+            i++
+        ){
+
+            const key =
+                localStorage.key(i);
 
 
-            if (
-                value === "Off"
-            ) {
-
-                textValue = "OFF";
-
-            }
-
-            else if (
-                value === "MID"
-            ) {
-
-                textValue = "MID";
-
-            }
-
-            else if (
-                value === "AL"
-            ) {
-
-                textValue = "AL";
-
-            }
-
-            else if (
-                value.startsWith(
-                    "Management-"
+            if(
+                key &&
+                key.startsWith(
+                    STORAGE_KEY
                 )
-            ) {
+            ){
 
-                textValue =
-                    `Management (${
-                        value.replace(
-                            "Management-",
-                            ""
+                storageKeys.push(key);
+            }
+        }
+
+
+        storageKeys.forEach(key => {
+
+            const savedWeekNumber =
+                parseInt(
+                    key.replace(
+                        STORAGE_KEY,
+                        ""
+                    ),
+                    10
+                );
+
+
+            if(
+                !isNaN(savedWeekNumber) &&
+                savedWeekNumber > weekNumber
+            ){
+
+                try{
+
+                    const weekData =
+                        JSON.parse(
+                            localStorage.getItem(
+                                key
+                            )
+                        );
+
+
+                    if(
+                        Array.isArray(
+                            weekData
                         )
-                    })`;
+                    ){
 
+                        const filtered =
+                            weekData.filter(
+                                person =>
+                                    String(
+                                        person.name
+                                    )
+                                    .trim()
+                                    .toLowerCase() !==
+                                    existingStaff
+                                    .toLowerCase()
+                            );
+
+
+                        localStorage.setItem(
+                            key,
+                            JSON.stringify(
+                                filtered
+                            )
+                        );
+                    }
+
+                }catch(error){
+
+                    console.warn(
+                        "Could not update future week:",
+                        key,
+                        error
+                    );
+                }
             }
-
-            else if (
-                value.endsWith("-AM")
-            ) {
-
-                textValue =
-                    `${value.replace(
-                        "-AM",
-                        ""
-                    )} (AM)`;
-
-            }
-
-            else if (
-                value.endsWith("-PM")
-            ) {
-
-                textValue =
-                    `${value.replace(
-                        "-PM",
-                        ""
-                    )} (PM)`;
-
-            }
+        });
 
 
-            const div =
-                document.createElement(
-                    "div"
-                );
+        /*
+           REMOVE FROM CURRENT TABLE
+        */
+
+        const table =
+            document.getElementById(
+                "rosterTable"
+            );
 
 
-            div.textContent =
-                textValue;
+        [...table.rows]
+        .slice(1)
+        .forEach(row => {
 
-
-            div.style.textAlign =
-                "center";
-
-
-            div.style.fontWeight =
-                "700";
-
-
-            div.style.fontSize =
-                "14px";
-
-
-            div.style.padding =
-                "8px 4px";
-
-
-            div.style.borderRadius =
-                "4px";
-
-
-            div.style.minHeight =
-                "34px";
-
-
-            div.style.display =
-                "flex";
-
-
-            div.style.alignItems =
-                "center";
-
-
-            div.style.justifyContent =
-                "center";
-
-
-            div.style.boxSizing =
-                "border-box";
-
-
-            div.style.width =
-                "100%";
-
-
-            if (
-                value.endsWith("-AM") &&
-                !value.startsWith("Management-")
-            ) {
-
-                div.style.background =
-                    "#2196F3";
-
-                div.style.color =
-                    "#ffffff";
-
-                div.style.border =
-                    "2px solid #1976D2";
-
-            }
-
-            else if (
-                value.endsWith("-PM") &&
-                !value.startsWith("Management-")
-            ) {
-
-                div.style.background =
-                    "#4CAF50";
-
-                div.style.color =
-                    "#ffffff";
-
-                div.style.border =
-                    "2px solid #388E3C";
-
-            }
-
-            else if (
-                value === "MID"
-            ) {
-
-                div.style.background =
-                    "#A0522D";
-
-                div.style.color =
-                    "#ffffff";
-
-                div.style.border =
-                    "2px solid #7B3F21";
-
-            }
-
-            else if (
-                value === "Off"
-            ) {
-
-                div.style.background =
-                    "#F8D7DA";
-
-                div.style.color =
-                    "#721C24";
-
-                div.style.border =
-                    "2px solid #E5A1A6";
-
-            }
-
-            else if (
-                value === "AL"
-            ) {
-
-                div.style.background =
-                    "#9C27B0";
-
-                div.style.color =
-                    "#ffffff";
-
-                div.style.border =
-                    "2px solid #7B1FA2";
-
-            }
-
-            else if (
-                value.startsWith(
-                    "Management-"
+            if(
+                row.classList.contains(
+                    "summary"
                 )
-            ) {
-
-                div.style.background =
-                    "#FFF3CD";
-
-                div.style.color =
-                    "#856404";
-
-                div.style.border =
-                    "2px solid #FFDA6A";
-
-            }
-
-            else {
-
-                div.style.background =
-                    "#ffffff";
-
-                div.style.color =
-                    "#555555";
-
-                div.style.border =
-                    "1px solid #cccccc";
-
-            }
+            )
+                return;
 
 
-            select.parentNode
-                .replaceChild(
-                    div,
-                    select
+            const input =
+                row.cells[0]
+                ?.querySelector(
+                    "input"
                 );
 
-        }
+
+            if(
+                input &&
+                input.value
+                .trim()
+                .toLowerCase() ===
+                existingStaff
+                .toLowerCase()
+            ){
+
+                row.remove();
+            }
+
+        });
+
+
+        updateDuplicate();
+
+        updateSummary();
+
+
+        saveRoster(false);
+
+
+        alert(
+            "✅ " +
+            existingStaff +
+            " has been removed.\n\n" +
+            "Current week + future weeks updated.\n" +
+            "Past weeks were NOT changed."
+        );
+
+
+        return;
+    }
+
+
+    alert(
+        "❌ Invalid choice.\n\n" +
+        "Please enter 1, 2 or 3."
     );
+}
 
 
-    const imageTable =
-        clone.querySelector(
+/* =================================================
+   DISPLAY VALUE
+================================================= */
+
+function displayValue(value){
+
+    if(!value)
+        return "Select Shift";
+
+
+    if(value === "Off")
+        return "OFF";
+
+
+    if(value === "MID")
+        return "MID";
+
+
+    if(value === "AL")
+        return "AL";
+
+
+    if(value === "FS")
+        return "FS";
+
+
+    /*
+       CUSTOM DISPLAY
+    */
+
+    if(
+        isCustomValue(value)
+    ){
+
+        return getCustomText(value);
+    }
+
+
+    if(
+        value.endsWith(" FS")
+    ){
+
+        return value.replace(
+            " FS",
+            " (FS)"
+        );
+    }
+
+
+    if(
+        value.startsWith(
+            "Management-"
+        )
+    ){
+
+        return (
+            "Management (" +
+            value.replace(
+                "Management-",
+                ""
+            ) +
+            ")"
+        );
+    }
+
+
+    if(
+        value.endsWith("-AM")
+    ){
+
+        return value.replace(
+            "-AM",
+            " (AM)"
+        );
+    }
+
+
+    if(
+        value.endsWith("-PM")
+    ){
+
+        return value.replace(
+            "-PM",
+            " (PM)"
+        );
+    }
+
+
+    return value;
+}
+
+
+/* =================================================
+   CSV
+================================================= */
+
+function downloadCSV(){
+
+    saveRoster(false);
+
+
+    const table =
+        document.getElementById(
+            "rosterTable"
+        );
+
+
+    const lines = [];
+
+
+    [...table.rows]
+    .forEach(row => {
+
+        const values = [];
+
+
+        [...row.cells]
+        .forEach(cell => {
+
+            const input =
+                cell.querySelector(
+                    "input"
+                );
+
+
+            const select =
+                cell.querySelector(
+                    "select"
+                );
+
+
+            let value = "";
+
+
+            if(input){
+
+                value =
+                    input.value;
+
+            }else if(select){
+
+                value =
+                    displayValue(
+                        select.value
+                    );
+
+            }else{
+
+                value =
+                    cell.innerText;
+            }
+
+
+            values.push(
+                `"${String(value)
+                    .replace(
+                        /"/g,
+                        '""'
+                    )
+                    .replace(
+                        /\s+/g,
+                        " "
+                    )
+                    .trim()}"`
+            );
+        });
+
+
+        lines.push(
+            values.join(",")
+        );
+    });
+
+
+    const blob =
+        new Blob(
+            [lines.join("\n")],
+            {
+                type:
+                    "text/csv;charset=utf-8"
+            }
+        );
+
+
+    downloadBlob(
+        blob,
+        "Dragon_Mart_Weekly_Roster.csv"
+    );
+}
+
+
+/* =================================================
+   DOWNLOAD IMAGE
+================================================= */
+
+async function downloadImage(){
+
+    /*
+       Save current roster first.
+    */
+
+    saveRoster(false);
+
+
+    /*
+       Check image library.
+    */
+
+    if(
+        typeof html2canvas ===
+        "undefined"
+    ){
+
+        alert(
+            "❌ Image library has not loaded yet."
+        );
+
+        return;
+    }
+
+
+    /*
+       We create a completely new table
+       using the ACTUAL selected values.
+    */
+
+    const sourceTable =
+        document.getElementById(
+            "rosterTable"
+        );
+
+
+    /*
+       EXPORT CONTAINER
+    */
+
+    const exportBox =
+        document.createElement(
+            "div"
+        );
+
+
+    exportBox.style.cssText = `
+        position:fixed;
+        left:-100000px;
+        top:0;
+        width:1800px;
+        padding:30px;
+        background:#ffffff;
+        font-family:Segoe UI,Arial,sans-serif;
+        box-sizing:border-box;
+    `;
+
+
+    /*
+       TITLE
+    */
+
+    const title =
+        document.createElement(
+            "div"
+        );
+
+
+    title.textContent =
+        "Dragon Mart Weekly Staff Roster";
+
+
+    title.style.cssText = `
+        text-align:center;
+        font-size:30px;
+        font-weight:bold;
+        color:#222;
+        margin-bottom:10px;
+    `;
+
+
+    exportBox.appendChild(title);
+
+
+    /*
+       WEEK
+    */
+
+    const week =
+        document.createElement(
+            "div"
+        );
+
+
+    week.textContent =
+        document.getElementById(
+            "week"
+        ).textContent;
+
+
+    week.style.cssText = `
+        text-align:center;
+        font-size:18px;
+        font-weight:bold;
+        color:#444;
+        margin-bottom:20px;
+    `;
+
+
+    exportBox.appendChild(week);
+
+
+    /*
+       NEW TABLE
+    */
+
+    const table =
+        document.createElement(
             "table"
         );
 
 
-    if (imageTable) {
-
-        imageTable.style.width =
-            "100%";
-
-
-        imageTable.style.tableLayout =
-            "fixed";
+    table.style.cssText = `
+        width:100%;
+        border-collapse:collapse;
+        table-layout:fixed;
+        background:#fff;
+    `;
 
 
-        imageTable.style.boxShadow =
-            "none";
+    /*
+       READ EVERY CURRENT ROW
+    */
+
+    [...sourceTable.rows]
+    .forEach(
+        sourceRow => {
+
+            const newRow =
+                document.createElement(
+                    "tr"
+                );
 
 
-        imageTable.style.borderCollapse =
-            "collapse";
+            /*
+               HEADER
+            */
+
+            if(
+                sourceRow.rowIndex === 0
+            ){
+
+                [...sourceRow.cells]
+                .forEach(
+                    sourceCell => {
+
+                        const cell =
+                            document.createElement(
+                                "th"
+                            );
 
 
-        imageTable
-            .querySelectorAll("tr")
-            .forEach(
-                row => {
-
-                    if (
-                        row.cells.length > 0
-                    ) {
-
-                        row.cells[0]
-                            .style.width =
-                            "190px";
+                        cell.innerHTML =
+                            sourceCell.innerHTML;
 
 
-                        row.cells[0]
-                            .style.minWidth =
-                            "190px";
+                        cell.style.cssText = `
+                            border:1px solid #aaa;
+                            padding:10px 5px;
+                            text-align:center;
+                            vertical-align:middle;
+                            font-size:14px;
+                            font-weight:700;
+                            color:#fff;
+                            background:linear-gradient(
+                                135deg,
+                                #6a11cb,
+                                #2575fc
+                            );
+                        `;
 
-                    }
 
-
-                    if (
-                        row.cells.length > 8
-                    ) {
-
-                        row.removeChild(
-                            row.lastElementChild
+                        newRow.appendChild(
+                            cell
                         );
-
                     }
+                );
+            }
 
-                }
+
+            /*
+               SUMMARY
+            */
+
+            else if(
+                sourceRow.classList.contains(
+                    "summary"
+                )
+            ){
+
+                [...sourceRow.cells]
+                .forEach(
+                    sourceCell => {
+
+                        const cell =
+                            document.createElement(
+                                "td"
+                            );
+
+
+                        cell.textContent =
+                            sourceCell.innerText;
+
+
+                        cell.style.cssText = `
+                            border:1px solid #ccc;
+                            padding:8px 3px;
+                            text-align:center;
+                            vertical-align:middle;
+                            font-size:12px;
+                            font-weight:700;
+                            color:#333;
+                            background:#f7f7f7;
+                        `;
+
+
+                        newRow.appendChild(
+                            cell
+                        );
+                    }
+                );
+            }
+
+
+            /*
+               STAFF ROW
+            */
+
+            else{
+
+                [...sourceRow.cells]
+                .forEach(
+                    (sourceCell,index) => {
+
+                        const cell =
+                            document.createElement(
+                                "td"
+                            );
+
+
+                        cell.style.cssText = `
+                            border:1px solid #ccc;
+                            padding:7px 4px;
+                            text-align:center;
+                            vertical-align:middle;
+                            font-size:13px;
+                            font-weight:700;
+                            color:#222;
+                            background:#fff;
+                        `;
+
+
+                        /*
+                           STAFF NAME
+                        */
+
+                        if(index === 0){
+
+                            const input =
+                                sourceCell
+                                .querySelector(
+                                    "input"
+                                );
+
+
+                            cell.textContent =
+                                input
+                                    ? input.value
+                                    : sourceCell.innerText;
+
+
+                            cell.style.fontSize =
+                                "15px";
+
+                            cell.style.fontWeight =
+                                "700";
+                        }
+
+
+                        /*
+                           SHIFT
+                        */
+
+                        else{
+
+                            const select =
+                                sourceCell
+                                .querySelector(
+                                    "select"
+                                );
+
+
+                            const value =
+                                select
+                                    ? select.value
+                                    : "";
+
+
+                            cell.textContent =
+                                displayValue(
+                                    value
+                                );
+
+
+                            /*
+                               AM
+                            */
+
+                            if(
+                                value.endsWith(
+                                    "-AM"
+                                )
+                            ){
+
+                                cell.style.background = "#FF9800";
+cell.style.color = "#fff";
+cell.style.border = "2px solid #F57C00";
+                            }
+
+
+                            /*
+                               PM
+                            */
+
+                            else if(
+                                value.endsWith(
+                                    "-PM"
+                                )
+                            ){
+
+                                cell.style.background =
+                                    "#4CAF50";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #388E3C";
+                            }
+
+
+                            /*
+                               MID
+                            */
+
+                            else if(
+                                value === "MID"
+                            ){
+
+                                cell.style.background =
+                                    "#A0522D";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #7B3F21";
+                            }
+
+
+                            /*
+                               OFF
+                            */
+
+                            else if(
+                                value === "Off"
+                            ){
+
+                                cell.style.background =
+                                    "#F8D7DA";
+
+                                cell.style.color =
+                                    "#721C24";
+
+                                cell.style.border =
+                                    "2px solid #E5A1A6";
+                            }
+
+
+                            /*
+                               AL
+                            */
+
+                            else if(
+                                value === "AL"
+                            ){
+
+                                cell.style.background =
+                                    "#9C27B0";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #7B1FA2";
+                            }
+
+
+                            /*
+                               CUSTOM
+                            */
+
+                            else if(
+                                isCustomValue(value)
+                            ){
+
+                                cell.style.background =
+                                    "#E91E63";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #AD1457";
+                            }
+
+
+                            /*
+                               MANAGEMENT
+                            */
+
+                            else if(
+                                value.startsWith(
+                                    "Management"
+                                )
+                            ){
+
+                                cell.style.background =
+                                    "#FFF3CD";
+
+                                cell.style.color =
+                                    "#856404";
+
+                                cell.style.border =
+                                    "2px solid #FFDA6A";
+                            }
+
+
+                            /*
+                               FS
+                            */
+
+                            else if(
+                                value === "FS" ||
+                                value.endsWith(
+                                    " FS"
+                                )
+                            ){
+
+                                cell.style.background =
+                                    "#ff9800";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #ef6c00";
+                            }
+
+
+                            /*
+                               EMPTY
+                            */
+
+                            else{
+
+                                cell.style.background =
+                                    "#fff";
+
+                                cell.style.color =
+                                    "#555";
+
+                                cell.style.border =
+                                    "1px solid #ccc";
+                            }
+
+
+                            cell.style.minHeight =
+                                "42px";
+
+                            cell.style.fontWeight =
+                                "800";
+
+                            cell.style.fontSize =
+                                "13px";
+                        }
+
+
+                        newRow.appendChild(
+                            cell
+                        );
+                    }
+                );
+            }
+
+
+            table.appendChild(
+                newRow
             );
-
-    }
-
-
-    clone.querySelectorAll("button")
-        .forEach(
-            button =>
-                button.remove()
-        );
+        }
+    );
 
 
-    document.body.appendChild(clone);
+    /*
+       FIRST COLUMN
+    */
+
+    [...table.rows]
+    .forEach(row => {
+
+        if(row.cells[0]){
+
+            row.cells[0].style.width =
+                "180px";
+        }
+    });
 
 
-    try {
+    exportBox.appendChild(
+        table
+    );
+
+
+    /*
+       ADD TO PAGE
+    */
+
+    document.body.appendChild(
+        exportBox
+    );
+
+
+    /*
+       WAIT FOR BROWSER
+    */
+
+    await new Promise(
+        resolve =>
+            requestAnimationFrame(
+                () =>
+                    requestAnimationFrame(
+                        resolve
+                    )
+            )
+    );
+
+
+    try{
+
+        /*
+           CAPTURE EXPORT TABLE
+        */
 
         const canvas =
             await html2canvas(
-                clone,
+                exportBox,
                 {
-
-                    scale: 2,
-
+                    scale:2,
                     backgroundColor:
                         "#ffffff",
+                    useCORS:true,
+                    allowTaint:false,
+                    logging:false,
 
-                    useCORS:
-                        true,
+                    width:
+                        exportBox.scrollWidth,
 
-                    allowTaint:
-                        false,
+                    height:
+                        exportBox.scrollHeight,
 
-                    logging:
-                        false
+                    windowWidth:
+                        exportBox.scrollWidth,
 
+                    windowHeight:
+                        exportBox.scrollHeight
                 }
             );
 
 
-        const link =
-            document.createElement("a");
+        /*
+           CREATE PNG
+        */
+
+        canvas.toBlob(
+            function(blob){
+
+                if(!blob){
+
+                    alert(
+                        "❌ Could not create image."
+                    );
+
+                    return;
+                }
 
 
-        link.download =
-            "Dragon_Mart_Weekly_Roster.png";
+                downloadBlob(
+                    blob,
+                    "Dragon_Mart_Weekly_Roster.png"
+                );
 
 
-        link.href =
-            canvas.toDataURL(
-                "image/png"
-            );
+                alert(
+                    "✅ Roster image downloaded successfully!"
+                );
 
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        document.body.removeChild(link);
-
-
-        alert(
-            "✅ Roster image downloaded successfully!"
+            },
+            "image/png"
         );
 
-    }
 
-    catch (error) {
+    }catch(error){
 
         console.error(error);
-
 
         alert(
             "❌ Could not create the roster image."
         );
 
+    }finally{
+
+        exportBox.remove();
     }
-
-
-    if (clone.parentNode) {
-
-        clone.parentNode
-            .removeChild(clone);
-
-    }
-
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =================================================
+   DOWNLOAD HELPER
+================================================= */
 
-checkLogin();
+function downloadBlob(
+    blob,
+    name
+){
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href = url;
+
+    link.download = name;
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    setTimeout(
+        () =>
+            URL.revokeObjectURL(
+                url
+            ),
+        1000
+    );
+}
+
+
+/* =================================================
+   AUTO LOGIN
+================================================= */
+
+if(
+    sessionStorage.getItem(
+        "DragonMartLoggedIn"
+    ) === "true"
+){
+
+    openApp();
+}
 
 </script>
 
 </body>
-
 </html>
