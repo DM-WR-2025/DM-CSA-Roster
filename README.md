@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1072,16 +1074,6 @@ function addStaffRow(
    CUSTOM VALUE
 ================================================= */
 
-/*
-   Custom values are stored like:
-
-   CUSTOM::Meeting
-   CUSTOM::Training
-   CUSTOM::Special Duty
-
-   This makes them easy to save and restore.
-*/
-
 function isCustomValue(value){
 
     return (
@@ -1208,9 +1200,7 @@ function makeShiftSelect(
     select.innerHTML = html;
 
 
-    /*
-       RESTORE CUSTOM VALUE
-    */
+    /* RESTORE CUSTOM VALUE */
 
     if(isCustomValue(savedValue)){
 
@@ -1237,28 +1227,21 @@ function makeShiftSelect(
     }
 
 
-    /*
-       RESTORE NORMAL VALUE
-    */
+    /* RESTORE NORMAL VALUE */
 
     select.value =
         savedValue || "";
 
-
     applyColor(select);
 
 
-    /*
-       CHANGE
-    */
+    /* CHANGE */
 
     select.addEventListener(
         "change",
         function(){
 
-            /*
-               CUSTOM SELECTED
-            */
+            /* CUSTOM SELECTED */
 
             if(
                 select.value === "CUSTOM"
@@ -1270,10 +1253,7 @@ function makeShiftSelect(
                     );
 
 
-                /*
-                   Cancel
-                   or empty
-                */
+                /* Cancel or empty */
 
                 if(
                     customText === null ||
@@ -1295,8 +1275,7 @@ function makeShiftSelect(
 
 
                 const cleanText =
-                    customText
-                    .trim();
+                    customText.trim();
 
 
                 const customValue =
@@ -1305,9 +1284,7 @@ function makeShiftSelect(
                     );
 
 
-                /*
-                   Remove old custom option
-                */
+                /* Remove old custom option */
 
                 [...select.options]
                 .forEach(option => {
@@ -1323,9 +1300,7 @@ function makeShiftSelect(
                 });
 
 
-                /*
-                   Create new custom option
-                */
+                /* Create new custom option */
 
                 const customOption =
                     document.createElement(
@@ -1457,9 +1432,7 @@ function updateDuplicate(){
         );
 
 
-    /*
-       Remove old duplicate borders.
-    */
+    /* Remove old duplicate borders */
 
     [...table.rows]
     .slice(1)
@@ -1486,9 +1459,7 @@ function updateDuplicate(){
     });
 
 
-    /*
-       Same staff duplicate.
-    */
+    /* Same staff duplicate */
 
     [...table.rows]
     .slice(1)
@@ -1513,11 +1484,6 @@ function updateDuplicate(){
             if(!value)
                 return;
 
-
-            /*
-               Custom values are excluded
-               from duplicate checking.
-            */
 
             if(
                 value === "MID" ||
@@ -1551,9 +1517,7 @@ function updateDuplicate(){
     });
 
 
-    /*
-       Same day duplicate.
-    */
+    /* Same day duplicate */
 
     for(
         let day=0;
@@ -1874,13 +1838,7 @@ function saveRoster(show){
     );
 
 
-    /*
-       Make currently existing staff
-       active for current + future weeks.
-
-       IMPORTANT:
-       This does NOT change past saved weeks.
-    */
+    /* Current + future staff */
 
     const currentPermanentStaff =
         getPermanentStaff();
@@ -1957,9 +1915,7 @@ function addStaff(){
     }
 
 
-    /* =================================================
-       ADD STAFF
-    ================================================= */
+    /* ADD STAFF */
 
     if(choice === "1"){
 
@@ -2056,9 +2012,7 @@ function addStaff(){
         ]);
 
 
-        /*
-           ADD TO CURRENT TABLE
-        */
+        /* ADD TO CURRENT TABLE */
 
         const summary =
             table.querySelector(
@@ -2116,9 +2070,7 @@ function addStaff(){
         }
 
 
-        /*
-           UPDATE SAVED FUTURE WEEKS ONLY
-        */
+        /* UPDATE SAVED FUTURE WEEKS ONLY */
 
         const storageKeys = [];
 
@@ -2251,9 +2203,7 @@ function addStaff(){
     }
 
 
-    /* =================================================
-       REMOVE STAFF
-    ================================================= */
+    /* REMOVE STAFF */
 
     if(choice === "2"){
 
@@ -2355,9 +2305,7 @@ function addStaff(){
         );
 
 
-        /*
-           REMOVE FROM SAVED FUTURE WEEKS ONLY
-        */
+        /* REMOVE FROM SAVED FUTURE WEEKS ONLY */
 
         const storageKeys = [];
 
@@ -2450,9 +2398,7 @@ function addStaff(){
         });
 
 
-        /*
-           REMOVE FROM CURRENT TABLE
-        */
+        /* REMOVE FROM CURRENT TABLE */
 
         const table =
             document.getElementById(
@@ -2497,7 +2443,6 @@ function addStaff(){
         updateDuplicate();
 
         updateSummary();
-
 
         saveRoster(false);
 
@@ -2548,9 +2493,7 @@ function displayValue(value){
         return "FS";
 
 
-    /*
-       CUSTOM DISPLAY
-    */
+    /* CUSTOM DISPLAY */
 
     if(
         isCustomValue(value)
@@ -2719,16 +2662,12 @@ function downloadCSV(){
 
 async function downloadImage(){
 
-    /*
-       Save current roster first.
-    */
+    /* Save current roster */
 
     saveRoster(false);
 
 
-    /*
-       Check image library.
-    */
+    /* Check image library */
 
     if(
         typeof html2canvas ===
@@ -2743,20 +2682,13 @@ async function downloadImage(){
     }
 
 
-    /*
-       We create a completely new table
-       using the ACTUAL selected values.
-    */
-
     const sourceTable =
         document.getElementById(
             "rosterTable"
         );
 
 
-    /*
-       EXPORT CONTAINER
-    */
+    /* EXPORT CONTAINER */
 
     const exportBox =
         document.createElement(
@@ -2776,9 +2708,7 @@ async function downloadImage(){
     `;
 
 
-    /*
-       TITLE
-    */
+    /* TITLE */
 
     const title =
         document.createElement(
@@ -2802,9 +2732,7 @@ async function downloadImage(){
     exportBox.appendChild(title);
 
 
-    /*
-       WEEK
-    */
+    /* WEEK */
 
     const week =
         document.createElement(
@@ -2830,9 +2758,7 @@ async function downloadImage(){
     exportBox.appendChild(week);
 
 
-    /*
-       NEW TABLE
-    */
+    /* NEW TABLE */
 
     const table =
         document.createElement(
@@ -2848,9 +2774,7 @@ async function downloadImage(){
     `;
 
 
-    /*
-       READ EVERY CURRENT ROW
-    */
+    /* READ EVERY CURRENT ROW */
 
     [...sourceTable.rows]
     .forEach(
@@ -2862,9 +2786,7 @@ async function downloadImage(){
                 );
 
 
-            /*
-               HEADER
-            */
+            /* HEADER */
 
             if(
                 sourceRow.rowIndex === 0
@@ -2908,9 +2830,7 @@ async function downloadImage(){
             }
 
 
-            /*
-               SUMMARY
-            */
+            /* SUMMARY */
 
             else if(
                 sourceRow.classList.contains(
@@ -2952,9 +2872,7 @@ async function downloadImage(){
             }
 
 
-            /*
-               STAFF ROW
-            */
+            /* STAFF ROW */
 
             else{
 
@@ -2980,9 +2898,7 @@ async function downloadImage(){
                         `;
 
 
-                        /*
-                           STAFF NAME
-                        */
+                        /* STAFF NAME */
 
                         if(index === 0){
 
@@ -3007,9 +2923,7 @@ async function downloadImage(){
                         }
 
 
-                        /*
-                           SHIFT
-                        */
+                        /* SHIFT */
 
                         else{
 
@@ -3034,6 +2948,7 @@ async function downloadImage(){
 
                             /*
                                AM
+                               BLUE
                             */
 
                             if(
@@ -3042,14 +2957,20 @@ async function downloadImage(){
                                 )
                             ){
 
-                                cell.style.background = "#FF9800";
-cell.style.color = "#fff";
-cell.style.border = "2px solid #F57C00";
+                                cell.style.background =
+                                    "#2196F3";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #1976D2";
                             }
 
 
                             /*
                                PM
+                               GREEN
                             */
 
                             else if(
@@ -3071,6 +2992,7 @@ cell.style.border = "2px solid #F57C00";
 
                             /*
                                MID
+                               BROWN
                             */
 
                             else if(
@@ -3109,6 +3031,7 @@ cell.style.border = "2px solid #F57C00";
 
                             /*
                                AL
+                               PURPLE
                             */
 
                             else if(
@@ -3127,26 +3050,8 @@ cell.style.border = "2px solid #F57C00";
 
 
                             /*
-                               CUSTOM
-                            */
-
-                            else if(
-                                isCustomValue(value)
-                            ){
-
-                                cell.style.background =
-                                    "#E91E63";
-
-                                cell.style.color =
-                                    "#fff";
-
-                                cell.style.border =
-                                    "2px solid #AD1457";
-                            }
-
-
-                            /*
                                MANAGEMENT
+                               YELLOW
                             */
 
                             else if(
@@ -3168,6 +3073,7 @@ cell.style.border = "2px solid #F57C00";
 
                             /*
                                FS
+                               ORANGE
                             */
 
                             else if(
@@ -3185,6 +3091,26 @@ cell.style.border = "2px solid #F57C00";
 
                                 cell.style.border =
                                     "2px solid #ef6c00";
+                            }
+
+
+                            /*
+                               CUSTOM
+                               BROWN
+                            */
+
+                            else if(
+                                isCustomValue(value)
+                            ){
+
+                                cell.style.background =
+                                    "#8D6E63";
+
+                                cell.style.color =
+                                    "#fff";
+
+                                cell.style.border =
+                                    "2px solid #6D4C41";
                             }
 
 
@@ -3231,9 +3157,7 @@ cell.style.border = "2px solid #F57C00";
     );
 
 
-    /*
-       FIRST COLUMN
-    */
+    /* FIRST COLUMN */
 
     [...table.rows]
     .forEach(row => {
@@ -3251,18 +3175,14 @@ cell.style.border = "2px solid #F57C00";
     );
 
 
-    /*
-       ADD TO PAGE
-    */
+    /* ADD TO PAGE */
 
     document.body.appendChild(
         exportBox
     );
 
 
-    /*
-       WAIT FOR BROWSER
-    */
+    /* WAIT FOR BROWSER */
 
     await new Promise(
         resolve =>
@@ -3277,9 +3197,7 @@ cell.style.border = "2px solid #F57C00";
 
     try{
 
-        /*
-           CAPTURE EXPORT TABLE
-        */
+        /* CAPTURE EXPORT TABLE */
 
         const canvas =
             await html2canvas(
@@ -3307,9 +3225,7 @@ cell.style.border = "2px solid #F57C00";
             );
 
 
-        /*
-           CREATE PNG
-        */
+        /* CREATE PNG */
 
         canvas.toBlob(
             function(blob){
