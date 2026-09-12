@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -5,7 +6,9 @@
 <title>Dragon Mart Weekly Staff Roster</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -220,7 +223,8 @@ table{
     box-shadow:0 4px 8px rgba(0,0,0,.1);
 }
 
-th,td{
+th,
+td{
     border:1px solid #d0d0d0;
     padding:8px 4px;
     text-align:center;
@@ -261,50 +265,44 @@ select{
     cursor:pointer;
 }
 
-/* ================= SHIFT COLORS ================= */
+/* ================= FINAL APPROVED SHIFT COLORS ================= */
 
-.SelectShift{
-    background:#fff!important;
-    color:#555!important;
-    border:2px solid #ccc!important;
-}
-
+/* AM = YELLOW */
 .AM{
-    background:#2196F3!important;
-    color:#fff!important;
-    border:2px solid #1976D2!important;
+    background:#FFD54F!important;
+    color:#5D4037!important;
+    border:2px solid #FBC02D!important;
 }
 
+/* PM = GREEN */
 .PM{
     background:#4CAF50!important;
     color:#fff!important;
     border:2px solid #388E3C!important;
 }
 
-.MID{
-    background:#A0522D!important;
-    color:#fff!important;
-    border:2px solid #7B3F21!important;
+/* OFF = BLUE */
+.Off{
+    background:#90CAF9!important;
+    color:#0D47A1!important;
+    border:2px solid #64B5F6!important;
 }
 
-.Off{
+/* AL = LIGHT ROSE */
+.AL{
     background:#F8D7DA!important;
     color:#721C24!important;
     border:2px solid #E5A1A6!important;
 }
 
-.AL{
-    background:#9C27B0!important;
-    color:#fff!important;
-    border:2px solid #7B1FA2!important;
-}
-
+/* MANAGEMENT = LIGHT OFFICE YELLOW */
 .Management{
-    background:#FFF3CD!important;
-    color:#856404!important;
-    border:2px solid #FFDA6A!important;
+    background:#FFF2CC!important;
+    color:#7F6000!important;
+    border:2px solid #FFD966!important;
 }
 
+/* FS = ORANGE */
 .FS{
     background:#ff9800!important;
     color:#fff!important;
@@ -312,13 +310,27 @@ select{
     font-weight:800!important;
 }
 
-/* ================= CUSTOM ================= */
-
+/* CUSTOM = BROWN */
 .Custom{
     background:#8D6E63!important;
     color:#fff!important;
     border:2px solid #6D4C41!important;
     font-weight:800!important;
+}
+
+/* MID = APPROVED LIGHT SLATE GRAY */
+.MID{
+    background:#CFD8DC!important;
+    color:#37474F!important;
+    border:2px solid #90A4AE!important;
+    font-weight:800!important;
+}
+
+/* EMPTY */
+.SelectShift{
+    background:#fff!important;
+    color:#555!important;
+    border:2px solid #ccc!important;
 }
 
 /* DUPLICATE */
@@ -373,7 +385,8 @@ select{
         width:120px;
     }
 
-    th,td{
+    th,
+    td{
         font-size:10px;
         padding:5px 2px;
     }
@@ -401,19 +414,18 @@ select{
 
     .AM,
     .PM,
-    .MID,
     .Off,
     .AL,
     .Management,
     .FS,
     .Custom,
+    .MID,
     .summary td{
         -webkit-print-color-adjust:exact!important;
         print-color-adjust:exact!important;
     }
 }
 </style>
-
 </head>
 
 <body>
@@ -427,15 +439,12 @@ select{
 <div class="login-card">
 
     <div class="login-logo">
-
         <img
             src="https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b"
             alt="Dragon Mart Logo">
-
     </div>
 
     <h1>Dragon Mart</h1>
-
     <h2>Staff Roster Login</h2>
 
     <p class="login-subtitle">
@@ -482,9 +491,7 @@ select{
         <button
             class="login-button"
             type="submit">
-
             🔐 Login
-
         </button>
 
         <div
@@ -499,8 +506,8 @@ select{
     </div>
 
 </div>
-
 </div>
+
 
 <!-- =================================================
      APP
@@ -580,6 +587,7 @@ select{
 
 </div>
 
+
 <!-- IMAGE LIBRARY -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -635,8 +643,10 @@ document
             .textContent =
                 "❌ Incorrect username or password.";
         }
+
     }
 );
+
 
 function togglePassword(){
 
@@ -657,6 +667,7 @@ function togglePassword(){
         button.textContent = "👁️";
     }
 }
+
 
 function openApp(){
 
@@ -711,7 +722,6 @@ function getPermanentStaff(){
     if(saved === null){
 
         savePermanentStaff(STAFF);
-
         return [...STAFF];
     }
 
@@ -721,7 +731,6 @@ function getPermanentStaff(){
             JSON.parse(saved);
 
         if(Array.isArray(parsed)){
-
             return parsed;
         }
 
@@ -828,12 +837,16 @@ function formatDate(date){
 
     return (
         String(date.getDate()).padStart(2,"0")
-        + "-"
-        + String(
+        +
+        "-"
+        +
+        String(
             date.getMonth()+1
         ).padStart(2,"0")
-        + "-"
-        + date.getFullYear()
+        +
+        "-"
+        +
+        date.getFullYear()
     );
 }
 
@@ -852,7 +865,6 @@ function loadWeek(){
     table.innerHTML = "";
 
     updateWeekDisplay();
-
     createHeader();
 
     let data = null;
@@ -943,7 +955,6 @@ function loadWeek(){
     });
 
     createSummary();
-
     updateDuplicate();
     updateSummary();
 }
@@ -1112,6 +1123,7 @@ function makeShiftSelect(
         );
 
     let html = `
+
         <option value="">
             Select Shift
         </option>
@@ -1167,6 +1179,7 @@ function makeShiftSelect(
     ){
 
         html += `
+
             <option value="Management-AM">
                 Management (AM)
             </option>
@@ -1174,6 +1187,7 @@ function makeShiftSelect(
             <option value="Management-PM">
                 Management (PM)
             </option>
+
         `;
     }
 
@@ -1181,6 +1195,7 @@ function makeShiftSelect(
     /* OTHER + CUSTOM */
 
     html += `
+
         <option value="Off">
             OFF
         </option>
@@ -1192,8 +1207,8 @@ function makeShiftSelect(
         <option value="CUSTOM">
             CUSTOM
         </option>
-    `;
 
+    `;
 
     select.innerHTML = html;
 
@@ -1261,11 +1276,8 @@ function makeShiftSelect(
                     select.value = "";
 
                     applyColor(select);
-
                     updateDuplicate();
-
                     updateSummary();
-
                     saveRoster(false);
 
                     return;
@@ -1274,7 +1286,6 @@ function makeShiftSelect(
 
                 const cleanText =
                     customText.trim();
-
 
                 const customValue =
                     createCustomValue(
@@ -1314,27 +1325,21 @@ function makeShiftSelect(
                 customOption.dataset.custom =
                     "true";
 
-
                 select.appendChild(
                     customOption
                 );
-
 
                 select.value =
                     customValue;
             }
 
-
             applyColor(select);
-
             updateDuplicate();
-
             updateSummary();
-
             saveRoster(false);
+
         }
     );
-
 
     return select;
 }
@@ -1453,7 +1458,6 @@ function updateDuplicate(){
 
             select.title = "";
         });
-
     });
 
 
@@ -1482,7 +1486,6 @@ function updateDuplicate(){
             if(!value)
                 return;
 
-
             if(
                 value === "MID" ||
                 value === "Off" ||
@@ -1494,7 +1497,6 @@ function updateDuplicate(){
                 )
             )
                 return;
-
 
             if(seen[value]){
 
@@ -1548,7 +1550,6 @@ function updateDuplicate(){
             const value =
                 select.value;
 
-
             if(
                 value &&
                 value !== "MID" &&
@@ -1566,6 +1567,7 @@ function updateDuplicate(){
 
                 used[value] = true;
             }
+
         });
 
 
@@ -1589,12 +1591,10 @@ function updateDuplicate(){
             if(!select)
                 return;
 
-
             [...select.options]
             .forEach(option => {
 
                 option.disabled = false;
-
 
                 if(
                     used[option.value] &&
@@ -1620,6 +1620,7 @@ function updateDuplicate(){
                 }
 
             });
+
         });
     }
 }
@@ -1698,7 +1699,6 @@ function updateSummary(){
             )
                 return;
 
-
             const select =
                 r.cells[day+1]
                 ?.querySelector(
@@ -1708,10 +1708,8 @@ function updateSummary(){
             if(!select)
                 return;
 
-
             const value =
                 select.value;
-
 
             if(value === "MID")
                 count.MID++;
@@ -1746,6 +1744,7 @@ function updateSummary(){
                 value.endsWith("-PM")
             )
                 count.PM++;
+
         });
 
 
@@ -1786,16 +1785,13 @@ function saveRoster(show){
         )
             return;
 
-
         const input =
             row.cells[0]
             ?.querySelector(
                 "input"
             );
 
-
         const days = [];
-
 
         for(
             let i=1;
@@ -1809,12 +1805,10 @@ function saveRoster(show){
                     "select"
                 );
 
-
             days.push(
                 select?.value || ""
             );
         }
-
 
         data.push({
 
@@ -1824,15 +1818,13 @@ function saveRoster(show){
             days:days
 
         });
+
     });
 
 
     localStorage.setItem(
-
         STORAGE_KEY + weekNumber,
-
         JSON.stringify(data)
-
     );
 
 
@@ -1841,14 +1833,12 @@ function saveRoster(show){
     const currentPermanentStaff =
         getPermanentStaff();
 
-
     const currentNames =
         data
         .map(person =>
             String(person.name).trim()
         )
         .filter(Boolean);
-
 
     savePermanentStaff([
         ...currentPermanentStaff,
@@ -1875,14 +1865,12 @@ function changeWeek(amount){
 
     weekNumber += amount;
 
-
     if(
         weekNumber < 0
     ){
 
         weekNumber = 0;
     }
-
 
     loadWeek();
 }
@@ -1922,14 +1910,11 @@ function addStaff(){
                 "👤 Enter new staff name:"
             );
 
-
         if(name === null)
             return;
 
-
         const newName =
             name.trim();
-
 
         if(!newName){
 
@@ -1945,7 +1930,6 @@ function addStaff(){
             document.getElementById(
                 "rosterTable"
             );
-
 
         const existing =
             [...table.rows]
@@ -1985,7 +1969,6 @@ function addStaff(){
         const permanentStaff =
             getPermanentStaff();
 
-
         const permanentExists =
             permanentStaff.some(
                 staff =>
@@ -2017,7 +2000,6 @@ function addStaff(){
                 ".summary"
             );
 
-
         const row =
             table.insertRow(
                 summary
@@ -2025,16 +2007,13 @@ function addStaff(){
                     : table.rows.length
             );
 
-
         const cell =
             row.insertCell();
-
 
         const input =
             document.createElement(
                 "input"
             );
-
 
         input.className =
             "name-input";
@@ -2042,10 +2021,8 @@ function addStaff(){
         input.value =
             newName;
 
-
         input.onchange =
             () => saveRoster(false);
-
 
         cell.appendChild(input);
 
@@ -2072,7 +2049,6 @@ function addStaff(){
 
         const storageKeys = [];
 
-
         for(
             let i=0;
             i<localStorage.length;
@@ -2081,7 +2057,6 @@ function addStaff(){
 
             const key =
                 localStorage.key(i);
-
 
             if(
                 key &&
@@ -2178,13 +2153,12 @@ function addStaff(){
                     );
                 }
             }
+
         });
 
 
         updateDuplicate();
-
         updateSummary();
-
         saveRoster(false);
 
 
@@ -2192,10 +2166,11 @@ function addStaff(){
             "✅ " +
             newName +
             " has been added.\n\n" +
+
             "Current week + future weeks updated.\n" +
+
             "Past weeks were not changed."
         );
-
 
         return;
     }
@@ -2279,9 +2254,12 @@ function addStaff(){
         const confirmed =
             confirm(
                 `⚠️ Are you sure you want to remove "${existingStaff}"?\n\n` +
+
                 `This will remove the staff member from:\n` +
+
                 `• Current week\n` +
                 `• Future weeks\n\n` +
+
                 `Past weeks will NOT be changed.`
             );
 
@@ -2307,7 +2285,6 @@ function addStaff(){
 
         const storageKeys = [];
 
-
         for(
             let i=0;
             i<localStorage.length;
@@ -2316,7 +2293,6 @@ function addStaff(){
 
             const key =
                 localStorage.key(i);
-
 
             if(
                 key &&
@@ -2393,6 +2369,7 @@ function addStaff(){
                     );
                 }
             }
+
         });
 
 
@@ -2414,7 +2391,6 @@ function addStaff(){
                 )
             )
                 return;
-
 
             const input =
                 row.cells[0]
@@ -2439,9 +2415,7 @@ function addStaff(){
 
 
         updateDuplicate();
-
         updateSummary();
-
         saveRoster(false);
 
 
@@ -2449,10 +2423,11 @@ function addStaff(){
             "✅ " +
             existingStaff +
             " has been removed.\n\n" +
+
             "Current week + future weeks updated.\n" +
+
             "Past weeks were NOT changed."
         );
-
 
         return;
     }
@@ -2474,18 +2449,14 @@ function displayValue(value){
     if(!value)
         return "Select Shift";
 
-
     if(value === "Off")
         return "OFF";
-
 
     if(value === "MID")
         return "MID";
 
-
     if(value === "AL")
         return "AL";
-
 
     if(value === "FS")
         return "FS";
@@ -2563,12 +2534,10 @@ function downloadCSV(){
 
     saveRoster(false);
 
-
     const table =
         document.getElementById(
             "rosterTable"
         );
-
 
     const lines = [];
 
@@ -2587,12 +2556,10 @@ function downloadCSV(){
                     "input"
                 );
 
-
             const select =
                 cell.querySelector(
                     "select"
                 );
-
 
             let value = "";
 
@@ -2628,12 +2595,14 @@ function downloadCSV(){
                     )
                     .trim()}"`
             );
+
         });
 
 
         lines.push(
             values.join(",")
         );
+
     });
 
 
@@ -2655,17 +2624,13 @@ function downloadCSV(){
 
 
 /* =================================================
-   DOWNLOAD IMAGE
+   DOWNLOAD IMAGE WITH LOGO
 ================================================= */
 
 async function downloadImage(){
 
-    /* Save current roster */
-
     saveRoster(false);
 
-
-    /* Check image library */
 
     if(
         typeof html2canvas ===
@@ -2695,6 +2660,7 @@ async function downloadImage(){
 
 
     exportBox.style.cssText = `
+
         position:fixed;
         left:-100000px;
         top:0;
@@ -2703,10 +2669,67 @@ async function downloadImage(){
         background:#ffffff;
         font-family:Segoe UI,Arial,sans-serif;
         box-sizing:border-box;
+
     `;
 
 
-    /* TITLE */
+    /* ==========================
+       LOGO + TITLE AREA
+    ========================== */
+
+    const logoTitle =
+        document.createElement(
+            "div"
+        );
+
+
+    logoTitle.style.cssText = `
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        width:100%;
+        min-height:130px;
+        margin-bottom:5px;
+
+    `;
+
+
+    const logo =
+        document.createElement(
+            "img"
+        );
+
+
+    logo.src =
+        "https://th.bing.com/th/id/OIP.-yQulJpK9XsIT5HcBWQgrAHaHZ?w=108&h=108&c=1&bgcl=d69c3b";
+
+
+    logo.alt =
+        "Dragon Mart Logo";
+
+
+    logo.crossOrigin =
+        "anonymous";
+
+
+    logo.style.cssText = `
+
+        position:absolute;
+        left:20px;
+        top:0;
+        width:120px;
+        height:120px;
+        object-fit:contain;
+
+    `;
+
+
+    logoTitle.appendChild(
+        logo
+    );
+
 
     const title =
         document.createElement(
@@ -2719,15 +2742,41 @@ async function downloadImage(){
 
 
     title.style.cssText = `
+
         text-align:center;
         font-size:30px;
         font-weight:bold;
         color:#222;
-        margin-bottom:10px;
+        text-shadow:1px 1px 2px #aaa;
+
     `;
 
 
-    exportBox.appendChild(title);
+    logoTitle.appendChild(
+        title
+    );
+
+
+    exportBox.appendChild(
+        logoTitle
+    );
+
+
+    /* WAIT FOR LOGO TO LOAD */
+
+    await new Promise(resolve => {
+
+        if(logo.complete){
+
+            resolve();
+
+        }else{
+
+            logo.onload = resolve;
+            logo.onerror = resolve;
+        }
+
+    });
 
 
     /* WEEK */
@@ -2745,15 +2794,19 @@ async function downloadImage(){
 
 
     week.style.cssText = `
+
         text-align:center;
         font-size:18px;
         font-weight:bold;
         color:#444;
         margin-bottom:20px;
+
     `;
 
 
-    exportBox.appendChild(week);
+    exportBox.appendChild(
+        week
+    );
 
 
     /* NEW TABLE */
@@ -2765,10 +2818,12 @@ async function downloadImage(){
 
 
     table.style.cssText = `
+
         width:100%;
         border-collapse:collapse;
         table-layout:fixed;
         background:#fff;
+
     `;
 
 
@@ -2805,6 +2860,7 @@ async function downloadImage(){
 
 
                         cell.style.cssText = `
+
                             border:1px solid #aaa;
                             padding:10px 5px;
                             text-align:center;
@@ -2817,12 +2873,14 @@ async function downloadImage(){
                                 #6a11cb,
                                 #2575fc
                             );
+
                         `;
 
 
                         newRow.appendChild(
                             cell
                         );
+
                     }
                 );
             }
@@ -2851,6 +2909,7 @@ async function downloadImage(){
 
 
                         cell.style.cssText = `
+
                             border:1px solid #ccc;
                             padding:8px 3px;
                             text-align:center;
@@ -2859,12 +2918,14 @@ async function downloadImage(){
                             font-weight:700;
                             color:#333;
                             background:#f7f7f7;
+
                         `;
 
 
                         newRow.appendChild(
                             cell
                         );
+
                     }
                 );
             }
@@ -2885,6 +2946,7 @@ async function downloadImage(){
 
 
                         cell.style.cssText = `
+
                             border:1px solid #ccc;
                             padding:7px 4px;
                             text-align:center;
@@ -2893,6 +2955,7 @@ async function downloadImage(){
                             font-weight:700;
                             color:#222;
                             background:#fff;
+
                         `;
 
 
@@ -2915,6 +2978,7 @@ async function downloadImage(){
 
                             cell.style.fontSize =
                                 "15px";
+
 
                             cell.style.fontWeight =
                                 "700";
@@ -2944,10 +3008,7 @@ async function downloadImage(){
                                 );
 
 
-                            /*
-                               AM
-                               BLUE
-                            */
+                            /* AM */
 
                             if(
                                 value.endsWith(
@@ -2956,20 +3017,17 @@ async function downloadImage(){
                             ){
 
                                 cell.style.background =
-                                    "#2196F3";
+                                    "#FFD54F";
 
                                 cell.style.color =
-                                    "#fff";
+                                    "#5D4037";
 
                                 cell.style.border =
-                                    "2px solid #1976D2";
+                                    "2px solid #FBC02D";
                             }
 
 
-                            /*
-                               PM
-                               GREEN
-                            */
+                            /* PM */
 
                             else if(
                                 value.endsWith(
@@ -2988,32 +3046,44 @@ async function downloadImage(){
                             }
 
 
-                            /*
-                               MID
-                               BROWN
-                            */
+                            /* MID */
 
                             else if(
                                 value === "MID"
                             ){
 
                                 cell.style.background =
-                                    "#A0522D";
+                                    "#CFD8DC";
 
                                 cell.style.color =
-                                    "#fff";
+                                    "#37474F";
 
                                 cell.style.border =
-                                    "2px solid #7B3F21";
+                                    "2px solid #90A4AE";
                             }
 
 
-                            /*
-                               OFF
-                            */
+                            /* OFF */
 
                             else if(
                                 value === "Off"
+                            ){
+
+                                cell.style.background =
+                                    "#90CAF9";
+
+                                cell.style.color =
+                                    "#0D47A1";
+
+                                cell.style.border =
+                                    "2px solid #64B5F6";
+                            }
+
+
+                            /* AL */
+
+                            else if(
+                                value === "AL"
                             ){
 
                                 cell.style.background =
@@ -3027,30 +3097,7 @@ async function downloadImage(){
                             }
 
 
-                            /*
-                               AL
-                               PURPLE
-                            */
-
-                            else if(
-                                value === "AL"
-                            ){
-
-                                cell.style.background =
-                                    "#9C27B0";
-
-                                cell.style.color =
-                                    "#fff";
-
-                                cell.style.border =
-                                    "2px solid #7B1FA2";
-                            }
-
-
-                            /*
-                               MANAGEMENT
-                               YELLOW
-                            */
+                            /* MANAGEMENT */
 
                             else if(
                                 value.startsWith(
@@ -3059,20 +3106,17 @@ async function downloadImage(){
                             ){
 
                                 cell.style.background =
-                                    "#FFF3CD";
+                                    "#FFF2CC";
 
                                 cell.style.color =
-                                    "#856404";
+                                    "#7F6000";
 
                                 cell.style.border =
-                                    "2px solid #FFDA6A";
+                                    "2px solid #FFD966";
                             }
 
 
-                            /*
-                               FS
-                               ORANGE
-                            */
+                            /* FS */
 
                             else if(
                                 value === "FS" ||
@@ -3092,10 +3136,7 @@ async function downloadImage(){
                             }
 
 
-                            /*
-                               CUSTOM
-                               BROWN
-                            */
+                            /* CUSTOM */
 
                             else if(
                                 isCustomValue(value)
@@ -3112,9 +3153,7 @@ async function downloadImage(){
                             }
 
 
-                            /*
-                               EMPTY
-                            */
+                            /* EMPTY */
 
                             else{
 
@@ -3143,6 +3182,7 @@ async function downloadImage(){
                         newRow.appendChild(
                             cell
                         );
+
                     }
                 );
             }
@@ -3151,6 +3191,7 @@ async function downloadImage(){
             table.appendChild(
                 newRow
             );
+
         }
     );
 
@@ -3165,6 +3206,7 @@ async function downloadImage(){
             row.cells[0].style.width =
                 "180px";
         }
+
     });
 
 
@@ -3195,17 +3237,22 @@ async function downloadImage(){
 
     try{
 
-        /* CAPTURE EXPORT TABLE */
+        /* CAPTURE EXPORT */
 
         const canvas =
             await html2canvas(
                 exportBox,
                 {
+
                     scale:2,
+
                     backgroundColor:
                         "#ffffff",
+
                     useCORS:true,
+
                     allowTaint:false,
+
                     logging:false,
 
                     width:
@@ -3219,6 +3266,7 @@ async function downloadImage(){
 
                     windowHeight:
                         exportBox.scrollHeight
+
                 }
             );
 
@@ -3245,7 +3293,7 @@ async function downloadImage(){
 
 
                 alert(
-                    "✅ Roster image downloaded successfully!"
+                    "✅ Roster image downloaded successfully with logo!"
                 );
 
             },
@@ -3300,7 +3348,6 @@ function downloadBlob(
 
 
     link.click();
-
 
     link.remove();
 
