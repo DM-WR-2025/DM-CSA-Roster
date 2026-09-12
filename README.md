@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -264,44 +265,38 @@ select{
     cursor:pointer;
 }
 
-/* ================= FINAL APPROVED SHIFT COLORS ================= */
+/* ================= FINAL SHIFT COLORS ================= */
 
-/* AM = YELLOW */
 .AM{
     background:#FFD54F!important;
     color:#5D4037!important;
     border:2px solid #FBC02D!important;
 }
 
-/* PM = GREEN */
 .PM{
     background:#4CAF50!important;
     color:#fff!important;
     border:2px solid #388E3C!important;
 }
 
-/* OFF = BLUE */
 .Off{
     background:#90CAF9!important;
     color:#0D47A1!important;
     border:2px solid #64B5F6!important;
 }
 
-/* AL = LIGHT ROSE */
 .AL{
     background:#F8D7DA!important;
     color:#721C24!important;
     border:2px solid #E5A1A6!important;
 }
 
-/* MANAGEMENT = LIGHT OFFICE YELLOW */
 .Management{
     background:#FFF2CC!important;
     color:#7F6000!important;
     border:2px solid #FFD966!important;
 }
 
-/* FS = ORANGE */
 .FS{
     background:#ff9800!important;
     color:#fff!important;
@@ -309,7 +304,6 @@ select{
     font-weight:800!important;
 }
 
-/* CUSTOM = BROWN */
 .Custom{
     background:#8D6E63!important;
     color:#fff!important;
@@ -317,7 +311,6 @@ select{
     font-weight:800!important;
 }
 
-/* MID = APPROVED LIGHT SLATE GRAY */
 .MID{
     background:#CFD8DC!important;
     color:#37474F!important;
@@ -325,21 +318,18 @@ select{
     font-weight:800!important;
 }
 
-/* EMPTY */
 .SelectShift{
     background:#fff!important;
     color:#555!important;
     border:2px solid #ccc!important;
 }
 
-/* DUPLICATE */
-
 .duplicate{
     border:3px solid red!important;
     box-shadow:0 0 7px rgba(255,0,0,.7)!important;
 }
 
-/* SUMMARY */
+/* ================= SUMMARY ================= */
 
 .summary td{
     background:#f7f7f7;
@@ -351,6 +341,63 @@ select{
 
 .summary td:first-child{
     background:#eee;
+}
+
+/* ================= SHIFT TIMING ================= */
+
+.shift-timing{
+    margin:18px 0 10px;
+    border:1px solid #d6d6d6;
+    border-radius:8px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 3px 7px rgba(0,0,0,.08);
+}
+
+.shift-timing-title{
+    padding:9px;
+    text-align:center;
+    font-size:15px;
+    font-weight:800;
+    color:#333;
+    background:#f3f3f3;
+}
+
+.shift-timing-table{
+    width:100%;
+    border-collapse:collapse;
+    box-shadow:none;
+}
+
+.shift-timing-table th,
+.shift-timing-table td{
+    border:1px solid #ddd;
+    padding:7px 5px;
+    font-size:12px;
+    text-align:center;
+}
+
+.shift-timing-table th{
+    background:#f7f7f7;
+    color:#333;
+}
+
+.timing-am{
+    background:#FFD54F!important;
+    color:#5D4037!important;
+    font-weight:800;
+}
+
+.timing-pm{
+    background:#4CAF50!important;
+    color:#fff!important;
+    font-weight:800;
+}
+
+.timing-mid{
+    background:#CFD8DC!important;
+    color:#37474F!important;
+    font-weight:800;
 }
 
 /* ================= MOBILE ================= */
@@ -394,6 +441,16 @@ select{
         font-size:10px;
         padding:6px 1px;
     }
+
+    .shift-timing-table th,
+    .shift-timing-table td{
+        font-size:9px;
+        padding:5px 2px;
+    }
+
+    .shift-timing-title{
+        font-size:13px;
+    }
 }
 
 /* ================= PRINT ================= */
@@ -419,7 +476,10 @@ select{
     .FS,
     .Custom,
     .MID,
-    .summary td{
+    .summary td,
+    .timing-am,
+    .timing-pm,
+    .timing-mid{
         -webkit-print-color-adjust:exact!important;
         print-color-adjust:exact!important;
     }
@@ -428,10 +488,6 @@ select{
 </head>
 
 <body>
-
-<!-- =================================================
-     LOGIN
-================================================== -->
 
 <div id="loginPage">
 
@@ -453,16 +509,13 @@ select{
     <form id="loginForm">
 
         <div class="login-field">
-
             <label>Username</label>
-
             <input
                 id="username"
                 type="text"
                 autocomplete="username"
                 placeholder="Enter username"
                 required>
-
         </div>
 
         <div class="login-field">
@@ -508,10 +561,6 @@ select{
 </div>
 
 
-<!-- =================================================
-     APP
-================================================== -->
-
 <div id="app">
 
 <div class="header">
@@ -556,6 +605,10 @@ select{
 
 <table id="rosterTable"></table>
 
+<!-- ================= SHIFT TIMING / BREAKS ================= -->
+
+<div id="shiftTiming" class="shift-timing"></div>
+
 <div class="controls">
 
     <button
@@ -586,9 +639,6 @@ select{
 
 </div>
 
-
-<!-- IMAGE LIBRARY -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
@@ -609,14 +659,12 @@ document
         e.preventDefault();
 
         const username =
-            document
-            .getElementById("username")
+            document.getElementById("username")
             .value
             .trim();
 
         const password =
-            document
-            .getElementById("password")
+            document.getElementById("password")
             .value;
 
         if(
@@ -836,14 +884,12 @@ function formatDate(date){
 
     return (
         String(date.getDate()).padStart(2,"0")
-        +
-        "-"
+        + "-"
         +
         String(
             date.getMonth()+1
         ).padStart(2,"0")
-        +
-        "-"
+        + "-"
         +
         date.getFullYear()
     );
@@ -956,6 +1002,7 @@ function loadWeek(){
     createSummary();
     updateDuplicate();
     updateSummary();
+    updateShiftTiming();
 }
 
 
@@ -1133,8 +1180,6 @@ function makeShiftSelect(
     `;
 
 
-    /* AM */
-
     html += DESKS.map(
         desk =>
         `
@@ -1144,8 +1189,6 @@ function makeShiftSelect(
         `
     ).join("");
 
-
-    /* PM */
 
     html += DESKS.map(
         desk =>
@@ -1157,8 +1200,6 @@ function makeShiftSelect(
     ).join("");
 
 
-    /* FS */
-
     html += DESKS.map(
         desk =>
         `
@@ -1168,8 +1209,6 @@ function makeShiftSelect(
         `
     ).join("");
 
-
-    /* MANAGEMENT */
 
     if(
         MANAGEMENT.includes(
@@ -1191,8 +1230,6 @@ function makeShiftSelect(
     }
 
 
-    /* OTHER + CUSTOM */
-
     html += `
 
         <option value="Off">
@@ -1211,8 +1248,6 @@ function makeShiftSelect(
 
     select.innerHTML = html;
 
-
-    /* RESTORE CUSTOM VALUE */
 
     if(isCustomValue(savedValue)){
 
@@ -1239,21 +1274,15 @@ function makeShiftSelect(
     }
 
 
-    /* RESTORE NORMAL VALUE */
-
     select.value =
         savedValue || "";
 
     applyColor(select);
 
 
-    /* CHANGE */
-
     select.addEventListener(
         "change",
         function(){
-
-            /* CUSTOM SELECTED */
 
             if(
                 select.value === "CUSTOM"
@@ -1263,9 +1292,6 @@ function makeShiftSelect(
                     prompt(
                         "✏️ Enter your custom option:"
                     );
-
-
-                /* Cancel or empty */
 
                 if(
                     customText === null ||
@@ -1282,7 +1308,6 @@ function makeShiftSelect(
                     return;
                 }
 
-
                 const cleanText =
                     customText.trim();
 
@@ -1291,8 +1316,6 @@ function makeShiftSelect(
                         cleanText
                     );
 
-
-                /* Remove old custom option */
 
                 [...select.options]
                 .forEach(option => {
@@ -1307,8 +1330,6 @@ function makeShiftSelect(
 
                 });
 
-
-                /* Create new custom option */
 
                 const customOption =
                     document.createElement(
@@ -1434,8 +1455,6 @@ function updateDuplicate(){
         );
 
 
-    /* Remove old duplicate borders */
-
     [...table.rows]
     .slice(1)
     .forEach(row => {
@@ -1459,8 +1478,6 @@ function updateDuplicate(){
         });
     });
 
-
-    /* Same staff duplicate */
 
     [...table.rows]
     .slice(1)
@@ -1515,8 +1532,6 @@ function updateDuplicate(){
 
     });
 
-
-    /* Same day duplicate */
 
     for(
         let day=0;
@@ -1760,6 +1775,158 @@ function updateSummary(){
 
 
 /* =================================================
+   SHIFT TIMING + BREAKS
+================================================= */
+
+function getShiftTimingType(){
+
+    const start = getStartDate();
+
+    return start;
+}
+
+
+function updateShiftTiming(){
+
+    const container =
+        document.getElementById(
+            "shiftTiming"
+        );
+
+    if(!container)
+        return;
+
+    const start =
+        getShiftTimingType();
+
+    const end =
+        new Date(start);
+
+    end.setDate(
+        start.getDate() + 6
+    );
+
+    container.innerHTML = `
+
+        <div class="shift-timing-title">
+            ⏰ Shift Timings & Breaks
+        </div>
+
+        <table class="shift-timing-table">
+
+            <tr>
+                <th>Days</th>
+                <th>Shift</th>
+                <th>Working Time</th>
+                <th>Break</th>
+            </tr>
+
+            <tr>
+                <td rowspan="3">
+                    Sunday – Thursday
+                </td>
+
+                <td class="timing-am">
+                    AM
+                </td>
+
+                <td>
+                    10:00 AM – 7:00 PM
+                </td>
+
+                <td>
+                    1:00 PM – 2:00 PM
+                </td>
+            </tr>
+
+            <tr>
+
+                <td class="timing-pm">
+                    PM
+                </td>
+
+                <td>
+                    1:00 PM – 10:00 PM
+                </td>
+
+                <td>
+                    5:00 PM – 6:00 PM
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="timing-mid">
+                    MID
+                </td>
+
+                <td>
+                    12:00 PM – 9:00 PM
+                </td>
+
+                <td>
+                    3:00 PM – 4:00 PM
+                </td>
+
+            </tr>
+
+            <tr>
+                <td rowspan="3">
+                    Friday – Saturday
+                </td>
+
+                <td class="timing-am">
+                    AM
+                </td>
+
+                <td>
+                    10:00 AM – 7:00 PM
+                </td>
+
+                <td>
+                    2:00 PM – 3:00 PM
+                </td>
+            </tr>
+
+            <tr>
+
+                <td class="timing-pm">
+                    PM
+                </td>
+
+                <td>
+                    2:00 PM – 11:00 PM
+                </td>
+
+                <td>
+                    5:00 PM – 6:00 PM
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="timing-mid">
+                    MID
+                </td>
+
+                <td>
+                    12:00 PM – 9:00 PM
+                </td>
+
+                <td>
+                    3:00 PM – 4:00 PM
+                </td>
+
+            </tr>
+
+        </table>
+    `;
+}
+
+
+/* =================================================
    SAVE
 ================================================= */
 
@@ -1826,8 +1993,6 @@ function saveRoster(show){
         JSON.stringify(data)
     );
 
-
-    /* Current + future staff */
 
     const currentPermanentStaff =
         getPermanentStaff();
@@ -1899,8 +2064,6 @@ function addStaff(){
         return;
     }
 
-
-    /* ADD STAFF */
 
     if(choice === "1"){
 
@@ -1992,8 +2155,6 @@ function addStaff(){
         ]);
 
 
-        /* ADD TO CURRENT TABLE */
-
         const summary =
             table.querySelector(
                 ".summary"
@@ -2043,8 +2204,6 @@ function addStaff(){
             );
         }
 
-
-        /* UPDATE SAVED FUTURE WEEKS ONLY */
 
         const storageKeys = [];
 
@@ -2175,8 +2334,6 @@ function addStaff(){
     }
 
 
-    /* REMOVE STAFF */
-
     if(choice === "2"){
 
         const permanentStaff =
@@ -2280,8 +2437,6 @@ function addStaff(){
         );
 
 
-        /* REMOVE FROM SAVED FUTURE WEEKS ONLY */
-
         const storageKeys = [];
 
         for(
@@ -2372,8 +2527,6 @@ function addStaff(){
         });
 
 
-        /* REMOVE FROM CURRENT TABLE */
-
         const table =
             document.getElementById(
                 "rosterTable"
@@ -2460,8 +2613,6 @@ function displayValue(value){
     if(value === "FS")
         return "FS";
 
-
-    /* CUSTOM DISPLAY */
 
     if(
         isCustomValue(value)
@@ -2623,7 +2774,10 @@ function downloadCSV(){
 
 
 /* =================================================
-   DOWNLOAD IMAGE WITH LOGO
+   DOWNLOAD IMAGE
+   FIXED:
+   LOGO STAYS ON LEFT SIDE
+   TITLE STAYS CENTERED
 ================================================= */
 
 async function downloadImage(){
@@ -2650,8 +2804,6 @@ async function downloadImage(){
         );
 
 
-    /* EXPORT CONTAINER */
-
     const exportBox =
         document.createElement(
             "div"
@@ -2672,25 +2824,54 @@ async function downloadImage(){
     `;
 
 
-    /* ==========================
-       LOGO + TITLE AREA
-    ========================== */
+    /* =================================================
+       EXPORT HEADER
+       SAME POSITION AS NORMAL HEADER
+    ================================================= */
 
-    const logoTitle =
+    const exportHeader =
         document.createElement(
             "div"
         );
 
 
-    logoTitle.style.cssText = `
+    exportHeader.style.cssText = `
 
+        position:relative;
+        width:100%;
+        height:150px;
         display:flex;
         align-items:center;
         justify-content:center;
-        position:relative;
-        width:100%;
-        min-height:130px;
-        margin-bottom:5px;
+        box-sizing:border-box;
+
+    `;
+
+
+    /* ================= LOGO ================= */
+
+    const logoBox =
+        document.createElement(
+            "div"
+        );
+
+
+    /*
+       IMPORTANT:
+       Logo is now positioned on the LEFT,
+       exactly like the normal .logo section.
+    */
+
+    logoBox.style.cssText = `
+
+        position:absolute;
+        left:10px;
+        top:0;
+        width:170px;
+        height:150px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
 
     `;
 
@@ -2715,20 +2896,26 @@ async function downloadImage(){
 
     logo.style.cssText = `
 
-        position:absolute;
-        left:20px;
-        top:0;
-        width:120px;
-        height:120px;
+        max-width:160px;
+        max-height:140px;
+        width:auto;
+        height:auto;
         object-fit:contain;
 
     `;
 
 
-    logoTitle.appendChild(
+    logoBox.appendChild(
         logo
     );
 
+
+    exportHeader.appendChild(
+        logoBox
+    );
+
+
+    /* ================= TITLE ================= */
 
     const title =
         document.createElement(
@@ -2747,38 +2934,22 @@ async function downloadImage(){
         font-weight:bold;
         color:#222;
         text-shadow:1px 1px 2px #aaa;
+        width:100%;
 
     `;
 
 
-    logoTitle.appendChild(
+    exportHeader.appendChild(
         title
     );
 
 
     exportBox.appendChild(
-        logoTitle
+        exportHeader
     );
 
 
-    /* WAIT FOR LOGO TO LOAD */
-
-    await new Promise(resolve => {
-
-        if(logo.complete){
-
-            resolve();
-
-        }else{
-
-            logo.onload = resolve;
-            logo.onerror = resolve;
-        }
-
-    });
-
-
-    /* WEEK */
+    /* ================= WEEK ================= */
 
     const week =
         document.createElement(
@@ -2798,7 +2969,7 @@ async function downloadImage(){
         font-size:18px;
         font-weight:bold;
         color:#444;
-        margin-bottom:20px;
+        margin:5px 0 20px;
 
     `;
 
@@ -2808,7 +2979,7 @@ async function downloadImage(){
     );
 
 
-    /* NEW TABLE */
+    /* ================= NEW TABLE ================= */
 
     const table =
         document.createElement(
@@ -2826,8 +2997,6 @@ async function downloadImage(){
     `;
 
 
-    /* READ EVERY CURRENT ROW */
-
     [...sourceTable.rows]
     .forEach(
         sourceRow => {
@@ -2837,8 +3006,6 @@ async function downloadImage(){
                     "tr"
                 );
 
-
-            /* HEADER */
 
             if(
                 sourceRow.rowIndex === 0
@@ -2885,8 +3052,6 @@ async function downloadImage(){
             }
 
 
-            /* SUMMARY */
-
             else if(
                 sourceRow.classList.contains(
                     "summary"
@@ -2930,8 +3095,6 @@ async function downloadImage(){
             }
 
 
-            /* STAFF ROW */
-
             else{
 
                 [...sourceRow.cells]
@@ -2958,8 +3121,6 @@ async function downloadImage(){
                         `;
 
 
-                        /* STAFF NAME */
-
                         if(index === 0){
 
                             const input =
@@ -2984,8 +3145,6 @@ async function downloadImage(){
                         }
 
 
-                        /* SHIFT */
-
                         else{
 
                             const select =
@@ -3007,8 +3166,6 @@ async function downloadImage(){
                                 );
 
 
-                            /* AM */
-
                             if(
                                 value.endsWith(
                                     "-AM"
@@ -3025,8 +3182,6 @@ async function downloadImage(){
                                     "2px solid #FBC02D";
                             }
 
-
-                            /* PM */
 
                             else if(
                                 value.endsWith(
@@ -3045,8 +3200,6 @@ async function downloadImage(){
                             }
 
 
-                            /* MID */
-
                             else if(
                                 value === "MID"
                             ){
@@ -3061,8 +3214,6 @@ async function downloadImage(){
                                     "2px solid #90A4AE";
                             }
 
-
-                            /* OFF */
 
                             else if(
                                 value === "Off"
@@ -3079,8 +3230,6 @@ async function downloadImage(){
                             }
 
 
-                            /* AL */
-
                             else if(
                                 value === "AL"
                             ){
@@ -3095,8 +3244,6 @@ async function downloadImage(){
                                     "2px solid #E5A1A6";
                             }
 
-
-                            /* MANAGEMENT */
 
                             else if(
                                 value.startsWith(
@@ -3114,8 +3261,6 @@ async function downloadImage(){
                                     "2px solid #FFD966";
                             }
 
-
-                            /* FS */
 
                             else if(
                                 value === "FS" ||
@@ -3135,8 +3280,6 @@ async function downloadImage(){
                             }
 
 
-                            /* CUSTOM */
-
                             else if(
                                 isCustomValue(value)
                             ){
@@ -3151,8 +3294,6 @@ async function downloadImage(){
                                     "2px solid #6D4C41";
                             }
 
-
-                            /* EMPTY */
 
                             else{
 
@@ -3195,8 +3336,6 @@ async function downloadImage(){
     );
 
 
-    /* FIRST COLUMN */
-
     [...table.rows]
     .forEach(row => {
 
@@ -3214,14 +3353,241 @@ async function downloadImage(){
     );
 
 
-    /* ADD TO PAGE */
+    /* =================================================
+       TIMING SECTION FOR PNG
+    ================================================= */
+
+    const timingBox =
+        document.createElement(
+            "div"
+        );
+
+
+    timingBox.style.cssText = `
+
+        margin-top:18px;
+        border:1px solid #d6d6d6;
+        border-radius:8px;
+        overflow:hidden;
+        background:#fff;
+
+    `;
+
+
+    const timingTitle =
+        document.createElement(
+            "div"
+        );
+
+
+    timingTitle.textContent =
+        "⏰ Shift Timings & Breaks";
+
+
+    timingTitle.style.cssText = `
+
+        padding:10px;
+        text-align:center;
+        font-size:16px;
+        font-weight:800;
+        color:#333;
+        background:#f3f3f3;
+
+    `;
+
+
+    timingBox.appendChild(
+        timingTitle
+    );
+
+
+    const timingTable =
+        document.createElement(
+            "table"
+        );
+
+
+    timingTable.style.cssText = `
+
+        width:100%;
+        border-collapse:collapse;
+        box-shadow:none;
+
+    `;
+
+
+    const timingRows = [
+
+        [
+            "Days",
+            "Shift",
+            "Working Time",
+            "Break"
+        ],
+
+        [
+            "Sunday – Thursday",
+            "AM",
+            "10:00 AM – 7:00 PM",
+            "1:00 PM – 2:00 PM"
+        ],
+
+        [
+            "Sunday – Thursday",
+            "PM",
+            "1:00 PM – 10:00 PM",
+            "5:00 PM – 6:00 PM"
+        ],
+
+        [
+            "Sunday – Thursday",
+            "MID",
+            "12:00 PM – 9:00 PM",
+            "3:00 PM – 4:00 PM"
+        ],
+
+        [
+            "Friday – Saturday",
+            "AM",
+            "10:00 AM – 7:00 PM",
+            "2:00 PM – 3:00 PM"
+        ],
+
+        [
+            "Friday – Saturday",
+            "PM",
+            "2:00 PM – 11:00 PM",
+            "5:00 PM – 6:00 PM"
+        ],
+
+        [
+            "Friday – Saturday",
+            "MID",
+            "12:00 PM – 9:00 PM",
+            "3:00 PM – 4:00 PM"
+        ]
+
+    ];
+
+
+    timingRows.forEach(
+        (rowData,rowIndex) => {
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            rowData.forEach(
+                (text,columnIndex) => {
+
+                    const cell =
+                        document.createElement(
+                            rowIndex === 0
+                                ? "th"
+                                : "td"
+                        );
+
+
+                    cell.textContent =
+                        text;
+
+
+                    cell.style.cssText = `
+
+                        border:1px solid #ddd;
+                        padding:8px 5px;
+                        text-align:center;
+                        vertical-align:middle;
+                        font-size:12px;
+                        font-weight:700;
+
+                    `;
+
+
+                    if(rowIndex === 0){
+
+                        cell.style.background =
+                            "#f7f7f7";
+
+                        cell.style.color =
+                            "#333";
+
+                    }else{
+
+                        if(columnIndex === 1){
+
+                            if(text === "AM"){
+
+                                cell.style.background =
+                                    "#FFD54F";
+
+                                cell.style.color =
+                                    "#5D4037";
+
+                            }else if(text === "PM"){
+
+                                cell.style.background =
+                                    "#4CAF50";
+
+                                cell.style.color =
+                                    "#fff";
+
+                            }else if(text === "MID"){
+
+                                cell.style.background =
+                                    "#CFD8DC";
+
+                                cell.style.color =
+                                    "#37474F";
+                            }
+
+                        }else{
+
+                            cell.style.background =
+                                "#fff";
+
+                            cell.style.color =
+                                "#333";
+                        }
+                    }
+
+
+                    row.appendChild(
+                        cell
+                    );
+
+                }
+            );
+
+
+            timingTable.appendChild(
+                row
+            );
+
+        }
+    );
+
+
+    timingBox.appendChild(
+        timingTable
+    );
+
+
+    exportBox.appendChild(
+        timingBox
+    );
+
 
     document.body.appendChild(
         exportBox
     );
 
 
-    /* WAIT FOR BROWSER */
+    /* =================================================
+       WAIT FOR IMAGE / LAYOUT
+    ================================================= */
 
     await new Promise(
         resolve =>
@@ -3235,8 +3601,6 @@ async function downloadImage(){
 
 
     try{
-
-        /* CAPTURE EXPORT */
 
         const canvas =
             await html2canvas(
@@ -3270,8 +3634,6 @@ async function downloadImage(){
             );
 
 
-        /* CREATE PNG */
-
         canvas.toBlob(
             function(blob){
 
@@ -3292,7 +3654,7 @@ async function downloadImage(){
 
 
                 alert(
-                    "✅ Roster image downloaded successfully with logo!"
+                    "✅ Roster image downloaded successfully!"
                 );
 
             },
